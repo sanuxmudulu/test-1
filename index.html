@@ -48,15 +48,17 @@
 
     /* Logo */
     .logo-wrap {
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
     .logo-wrap img {
-      height: 65px;
-      object-fit: contain;
-    }
-    @media (min-width: 768px) {
-      .logo-wrap img { height: 80px; }
-    }
+  height: 65px;
+  width: auto;
+  max-width: 250px;
+  object-fit: contain;
+}
+@media (min-width: 768px) {
+  .logo-wrap img { height: 80px; max-width: 300px; }
+}
 
     /* Headline */
     h1 {
