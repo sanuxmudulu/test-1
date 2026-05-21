@@ -281,9 +281,9 @@
       </div>
     </div>
 
-    <a class="cta-btn" href="https://giftclick.org/aff_c?offer_id=4331&aff_id=150406&source=jbstyle">
-      Claim Now
-    </a>
+    <a class="cta-btn" id="cta-link" href="#">
+  Claim Now
+</a>
 
     <p class="sub-text">Higher value deals = higher payout</p>
 
@@ -367,6 +367,14 @@
         });
       }, 9000);
     }, 1500);
+
+    const BASE_URL = 'https://giftclick.org/aff_c?offer_id=4331&aff_id=150406';
+
+document.getElementById('cta-link').addEventListener('click', function(e) {
+  e.preventDefault();
+  const ad = new URLSearchParams(window.location.search).get('ad');
+  window.location.href = BASE_URL + (ad ? '&source=' + encodeURIComponent(ad) : '');
+});
   </script>
 
 </body>
