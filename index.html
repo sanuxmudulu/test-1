@@ -1,623 +1,701 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Sephora Reviewer Program – $750 Gift Card</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: #fff;
-    color: #1a1a2e;
-    font-size: 15px;
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-  }
+  <title>Playful Rewards</title>
 
-  .page-wrap { max-width: 480px; margin: 0 auto; }
-
-  @media (min-width: 768px) {
-    body { background: #f7f0f5; }
-    .page-wrap {
-      max-width: 520px;
-      margin: 40px auto;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 8px 48px rgba(180,80,130,0.12);
-      background: #fff;
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
     }
-  }
 
-  /* TOAST */
-  .toast {
-    position: fixed; top: 16px; left: 50%;
-    transform: translateX(-50%) translateY(-100px);
-    background: #fff; border: 1px solid #f0dde8;
-    border-radius: 12px; padding: 11px 15px;
-    box-shadow: 0 4px 20px rgba(180,80,130,0.15);
-    z-index: 999; min-width: 250px; max-width: 320px;
-    transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
-    pointer-events: none;
-  }
-  .toast.show { transform: translateX(-50%) translateY(0); }
-  .toast-name { font-size: 13px; font-weight: 700; color: #9b59b6; margin-bottom: 2px; }
-  .toast-msg { font-size: 13px; color: #444; }
-  .toast-msg strong { color: #2a9d5c; }
+    body {
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #ffffff;
+      background:
+        radial-gradient(circle at 50% 18%, rgba(151, 61, 255, 0.22), transparent 34%),
+        radial-gradient(circle at 50% 48%, rgba(180, 81, 255, 0.11), transparent 28%),
+        linear-gradient(180deg, #130821 0%, #0f1724 42%, #0f1724 100%);
+    }
 
-  /* HERO */
-  .hero {
-    background: linear-gradient(160deg, #fdf0f6 0%, #f5e8f8 100%);
-    padding: 32px 24px 28px;
-    text-align: center;
-  }
+    .page {
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 16px 20px 44px;
+    }
 
-  .brand-logo {
-    display: inline-block;
-    background: #1a1a1a; color: #fff;
-    font-size: 20px; font-weight: 900;
-    letter-spacing: 0.22em;
-    padding: 7px 18px; border-radius: 3px;
-    margin: 8px 0 24px;
-    text-transform: uppercase;
-  }
+    .progress-wrap {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
 
-  .hero h1 {
-    font-size: 18px; font-weight: 500;
-    line-height: 1.55; color: #1a1a2e;
-    margin-bottom: 20px; letter-spacing: -0.01em;
-  }
-  .hero h1 em { font-style: normal; color: #d4679a; font-weight: 700; }
+    .progress-track {
+      flex: 1;
+      height: 8px;
+      border-radius: 999px;
+      background: #262a36;
+      overflow: hidden;
+    }
 
-  .earnings-card {
-    background: #fff; border-radius: 14px;
-    padding: 18px 20px; margin: 0 0 20px;
-    box-shadow: 0 2px 12px rgba(180,80,130,0.1); text-align: left;
-  }
-  .earnings-card .card-header {
-    display: flex; align-items: center; gap: 10px;
-    font-weight: 700; font-size: 15px; margin-bottom: 10px; color: #1a1a2e;
-  }
-  .dollar-icon {
-    width: 28px; height: 28px; background: #d4679a; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    color: #fff; font-size: 14px; font-weight: 700; flex-shrink: 0;
-  }
-  .card-body-text { font-size: 14px; color: #444; margin-bottom: 12px; }
-  .earnings-highlight { color: #2a9d5c; font-weight: 700; }
-  .progress-bar { height: 7px; background: #f0dde8; border-radius: 4px; overflow: hidden; margin-bottom: 6px; }
-  .progress-fill { height: 100%; width: 85%; background: linear-gradient(90deg, #d4679a, #e891c0); border-radius: 4px; }
-  .progress-label { font-size: 12px; color: #999; text-align: right; }
+    .progress-fill {
+      height: 100%;
+      width: 50%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #a735f0 0%, #c9709a 50%, #ffd21f 100%);
+      transition: width 0.4s ease;
+    }
 
-  .cta-btn {
-    display: block; width: 100%;
-    background: linear-gradient(135deg, #d4679a, #b34f82);
-    color: #fff; font-size: 17px; font-weight: 600;
-    padding: 15px 20px; border-radius: 8px; border: none;
-    cursor: pointer; text-align: center; text-decoration: none;
-    letter-spacing: 0.01em; margin-bottom: 10px;
-    -webkit-tap-highlight-color: transparent;
-    transition: opacity 0.2s;
-    line-height: 1.3;
-  }
-  .cta-btn:active { opacity: 0.88; }
+    .step-text {
+      flex-shrink: 0;
+      font-size: 14px;
+      font-weight: 700;
+      color: #a7aec5;
+    }
 
-  .disclaimer { font-size: 12px; color: #bbb; text-align: center; }
+    .section {
+      margin-top: 28px;
+      text-align: center;
+    }
 
-  /* SECTIONS */
-  .section { padding: 32px 24px; }
+    .badge {
+      display: inline-block;
+      padding: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #a735f0, #c9709a, #ffd21f);
+    }
 
-  .section-heading {
-    font-size: 22px; font-weight: 800; text-align: center;
-    margin-bottom: 20px; color: #1a1a2e;
-    letter-spacing: -0.03em; line-height: 1.2;
-  }
+    .badge-inner {
+      display: inline-block;
+      border-radius: 999px;
+      background: #0f1724;
+      padding: 9px 24px;
+      color: #ffd000;
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 0.3px;
+    }
 
-  .steps { display: flex; flex-direction: column; gap: 10px; }
-  .step-card {
-    background: #fff; border-radius: 12px; padding: 15px 16px;
-    display: flex; align-items: flex-start; gap: 14px;
-    box-shadow: 0 1px 6px rgba(0,0,0,0.06);
-  }
-  .step-icon {
-    width: 40px; height: 40px; border-radius: 50%;
-    background: linear-gradient(135deg, #d4679a, #e891c0);
-    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-  }
-  .step-icon svg { width: 19px; height: 19px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-  .step-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 2px; letter-spacing: -0.01em; }
-  .step-card p { font-size: 13px; color: #777; line-height: 1.5; }
+    h1 {
+      margin-top: 26px;
+      font-size: 52px;
+      line-height: 1.05;
+      font-weight: 900;
+      letter-spacing: -1.8px;
+    }
 
-  .stats-row { display: flex; border-top: 1px solid #f0dde8; border-bottom: 1px solid #f0dde8; }
-  .stat-item { flex: 1; text-align: center; padding: 18px 8px; border-right: 1px solid #f0dde8; }
-  .stat-item:last-child { border-right: none; }
-  .stat-item .stat-icon { font-size: 18px; margin-bottom: 4px; color: #d4679a; }
-  .stat-item strong { display: block; font-size: 16px; font-weight: 800; color: #1a1a2e; letter-spacing: -0.02em; }
-  .stat-item span { font-size: 12px; color: #aaa; }
+    .gradient-text {
+      background: linear-gradient(90deg, #a735f0 0%, #c9709a 50%, #ffd21f 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
 
-  .mid-cta { padding: 20px 24px; text-align: center; }
-  .mid-cta .disclaimer { margin-top: 8px; }
+    .subtext {
+      max-width: 660px;
+      margin: 24px auto 0;
+      color: #a7aec5;
+      font-size: 18px;
+      line-height: 1.55;
+    }
 
-  /* REVIEWS */
-  .reviews-section { padding: 32px 24px; }
-  .reviews-header { text-align: center; margin-bottom: 16px; }
-  .reviews-header h2 {
-    font-size: 24px; font-weight: 900; margin-bottom: 6px;
-    color: #1a1a2e; letter-spacing: -0.03em; line-height: 1.2;
-  }
-  .reviews-header p { font-size: 14px; color: #888; }
+    .stats-card {
+      margin-top: 34px;
+      border: 1px solid #262a36;
+      background: #181b24;
+      border-radius: 20px;
+      padding: 26px 18px;
+    }
 
-  .earnings-banner {
-    background: #f0faf4; border-radius: 10px; padding: 14px 16px;
-    margin-bottom: 20px; font-size: 14px; font-weight: 600; color: #2a9d5c;
-    display: flex; align-items: flex-start; gap: 8px; line-height: 1.5;
-  }
-  .earnings-banner .dollar-sign { flex-shrink: 0; margin-top: 1px; }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
 
-  .review-card {
-    background: #fff; border: 1px solid #ece0ec;
-    border-radius: 12px; padding: 16px; margin-bottom: 12px;
-  }
-  .review-top {
-    display: flex; align-items: center;
-    justify-content: space-between; margin-bottom: 10px;
-  }
-  .reviewer-info { display: flex; align-items: center; gap: 10px; }
-  .avatar {
-    width: 38px; height: 38px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 700; font-size: 12px; color: #fff;
-    background: linear-gradient(135deg, #d4679a, #9b59b6); flex-shrink: 0;
-  }
-  .reviewer-name { font-size: 15px; font-weight: 700; letter-spacing: -0.01em; }
-  .reviewer-date { font-size: 12px; color: #bbb; margin-top: 1px; }
-  .stars { color: #f5a623; font-size: 14px; letter-spacing: 2px; }
-  .earned-badge {
-    display: inline-flex; align-items: center; gap: 5px;
-    color: #2a9d5c; font-size: 13px; font-weight: 700; margin-bottom: 4px;
-  }
-  .product-tag { font-size: 13px; color: #9b59b6; margin-bottom: 8px; font-weight: 500; }
-  .review-text { font-size: 14px; color: #444; line-height: 1.65; }
+    .stat {
+      padding: 0 10px;
+      border-right: 1px solid #262a36;
+    }
 
-  .review-pagination {
-    display: flex; justify-content: center; gap: 10px; margin-top: 16px;
-  }
-  .page-btn {
-    width: 36px; height: 36px; border-radius: 50%;
-    border: 1.5px solid #e0c8d8; background: #fff;
-    color: #888; font-size: 14px; font-weight: 600;
-    cursor: pointer; display: flex; align-items: center; justify-content: center;
-    font-family: 'Inter', sans-serif; transition: all 0.2s;
-  }
-  .page-btn.active { background: #d4679a; border-color: #d4679a; color: #fff; }
+    .stat:last-child {
+      border-right: none;
+    }
 
-  /* CATEGORIES */
-  .categories-section { padding: 32px 24px; background: #fdf5f9; }
+    .stat-icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto;
+      border-radius: 50%;
+      background: #ffd000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0f1724;
+      font-size: 25px;
+      font-weight: 900;
+    }
 
-  .cat-badge {
-    display: block; text-align: center;
-    background: #f0dde8; color: #9b59b6;
-    font-size: 12px; font-weight: 600;
-    padding: 5px 16px; border-radius: 20px;
-    margin: 0 auto 14px; width: fit-content; letter-spacing: 0.04em;
-  }
+    .stat-value {
+      margin-top: 16px;
+      color: #ffd000;
+      font-size: 28px;
+      font-weight: 900;
+    }
 
-  .categories-section h2 {
-    font-size: 28px; font-weight: 900; text-align: center;
-    margin-bottom: 8px; color: #1a1a2e;
-    letter-spacing: -0.04em; line-height: 1.1;
-  }
-  .categories-section .sub {
-    font-size: 14px; color: #888; text-align: center;
-    margin-bottom: 24px; line-height: 1.6;
-  }
+    .stat-label {
+      margin-top: 6px;
+      color: #a7aec5;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.7px;
+    }
 
-  .cat-grid { display: flex; flex-direction: column; gap: 16px; }
+    h2 {
+      margin-top: 46px;
+      font-size: 24px;
+      line-height: 1.2;
+      font-weight: 900;
+    }
 
-  .cat-card {
-    border-radius: 14px; overflow: hidden;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08); background: #fff;
-  }
+    .device-list {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      text-align: left;
+    }
 
-  .cat-img { width: 100%; height: 170px; object-fit: cover; display: block; }
+    .device-btn {
+      width: 100%;
+      border: none;
+      border-radius: 20px;
+      padding: 1px;
+      cursor: pointer;
+      color: #ffffff;
+      background: linear-gradient(90deg, #953cff, #b451ff);
+      box-shadow: 0 12px 28px rgba(151, 61, 255, 0.22);
+    }
 
-  .cat-img-placeholder {
-    width: 100%; height: 170px;
-    background: linear-gradient(135deg, #f0d0e8, #ddc0f0);
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    gap: 6px; font-size: 13px; color: #b070b0; font-weight: 600; text-align: center; padding: 12px;
-  }
-  .cat-img-placeholder .img-name {
-    font-size: 11px; color: #c090c0; font-family: monospace;
-    background: rgba(255,255,255,0.5); padding: 2px 8px; border-radius: 4px;
-  }
+    .device-inner {
+      min-height: 82px;
+      border-radius: 19px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(90deg, #953cff, #b451ff);
+    }
 
-  .cat-info {
-    padding: 14px 16px; display: flex;
-    align-items: center; justify-content: space-between;
-  }
-  .cat-info-left h3 { font-size: 18px; font-weight: 800; margin-bottom: 2px; letter-spacing: -0.02em; }
-  .cat-info-left span { font-size: 12px; color: #aaa; }
-  .cat-browse { font-size: 13px; color: #9b59b6; font-weight: 600; text-decoration: none; white-space: nowrap; }
+    .device-left {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
 
-  .view-all-wrap { text-align: center; margin-top: 22px; }
+    .device-icon {
+      width: 34px;
+      text-align: center;
+      font-size: 30px;
+      line-height: 1;
+    }
 
-  /* JOIN */
-  .join-section {
-    padding: 36px 24px;
-    background: linear-gradient(135deg, #d4679a 0%, #9b59b6 100%);
-    color: #fff; text-align: center;
-  }
-  .join-badge {
-    display: inline-block; background: rgba(255,255,255,0.2);
-    border-radius: 20px; padding: 4px 14px;
-    font-size: 12px; font-weight: 600; margin-bottom: 14px; letter-spacing: 0.05em;
-  }
-  .join-section h2 { font-size: 24px; font-weight: 900; margin-bottom: 10px; line-height: 1.2; letter-spacing: -0.03em; }
-  .join-section > p { font-size: 14px; opacity: 0.88; margin-bottom: 24px; line-height: 1.6; }
+    .device-title {
+      font-size: 21px;
+      font-weight: 900;
+      color: #ffffff;
+    }
 
-  .join-features { display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px; text-align: left; }
-  .join-feature { display: flex; align-items: flex-start; gap: 12px; }
-  .join-feature-icon {
-    width: 34px; height: 34px; background: rgba(255,255,255,0.2);
-    border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-  }
-  .join-feature-icon svg { width: 17px; height: 17px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-  .join-feature-text strong { display: block; font-size: 14px; font-weight: 700; margin-bottom: 1px; }
-  .join-feature-text span { font-size: 13px; opacity: 0.82; }
+    .device-sub {
+      margin-top: 6px;
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 15px;
+    }
 
-  .cta-btn-white {
-    display: block; width: 100%; background: #fff;
-    color: #d4679a; font-size: 15px; font-weight: 700;
-    padding: 15px 20px; border-radius: 8px; border: none;
-    cursor: pointer; text-align: center; text-decoration: none;
-    letter-spacing: 0.01em; -webkit-tap-highlight-color: transparent;
-    transition: opacity 0.2s; font-family: 'Inter', sans-serif;
-    line-height: 1.3;
-  }
-  .cta-btn-white:active { opacity: 0.9; }
+    .chevron {
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 30px;
+      line-height: 1;
+    }
 
-  /* FOOTER */
-  .footer {
-    padding: 18px 24px; text-align: center;
-    background: #f9f9f9; border-top: 1px solid #eee;
-  }
-  .footer p { font-size: 12px; color: #ccc; }
-</style>
+    .final-cta-wrap {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .final-cta {
+      border: none;
+      border-radius: 20px;
+      padding: 20px 40px;
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: 0.4px;
+      cursor: pointer;
+      background: linear-gradient(90deg, #a735f0 0%, #c9709a 50%, #ffd21f 100%);
+      box-shadow: 0 0 40px -5px #a735f0;
+    }
+
+    .journey-card,
+    .reviews-card {
+      margin-top: 48px;
+      border: 1px solid #262a36;
+      background: #181b24;
+      border-radius: 20px;
+      padding: 28px;
+    }
+
+    .journey-title {
+      text-align: center;
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .journey-list {
+      margin-top: 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      text-align: left;
+    }
+
+    .journey-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .journey-number {
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #a735f0 0%, #c9709a 50%, #ffd21f 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+    }
+
+    .journey-heading {
+      font-weight: 900;
+      color: #ffffff;
+    }
+
+    .journey-body {
+      margin-top: 6px;
+      color: #a7aec5;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .reviews-card {
+      text-align: left;
+    }
+
+    .trustpilot-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 24px;
+      font-weight: 900;
+      color: #ffffff;
+    }
+
+    .green {
+      color: #00b67a;
+    }
+
+    .reviews-list {
+      margin-top: 34px;
+      display: flex;
+      flex-direction: column;
+      gap: 34px;
+    }
+
+    .review-top {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #e5e7eb;
+      color: #0f1724;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    .review-name {
+      font-weight: 900;
+      color: #ffffff;
+    }
+
+    .review-body-wrap {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid #262a36;
+    }
+
+    .review-stars {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #00b67a;
+      font-size: 18px;
+      letter-spacing: 2px;
+    }
+
+    .verified {
+      color: #ffffff;
+      font-size: 14px;
+      letter-spacing: 0;
+    }
+
+    .review-title {
+      margin-top: 16px;
+      font-size: 18px;
+      font-weight: 900;
+      color: #ffffff;
+    }
+
+    .review-text {
+      margin-top: 10px;
+      color: #a7aec5;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 600px) {
+      .page {
+        padding: 16px 18px 36px;
+      }
+
+      h1 {
+        font-size: 40px;
+        letter-spacing: -1.2px;
+      }
+
+      .subtext {
+        font-size: 15px;
+        line-height: 1.45;
+      }
+
+      .stats-card {
+        padding: 22px 8px;
+      }
+
+      .stat-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 22px;
+      }
+
+      .stat-value {
+        font-size: 22px;
+      }
+
+      .stat-label {
+        font-size: 10px;
+      }
+
+      h2 {
+        font-size: 22px;
+        margin-top: 38px;
+      }
+
+      .device-inner {
+        min-height: 78px;
+        padding: 18px 20px;
+      }
+
+      .device-title {
+        font-size: 19px;
+      }
+
+      .device-sub {
+        font-size: 14px;
+      }
+
+      .journey-card,
+      .reviews-card {
+        padding: 24px 20px;
+      }
+    }
+
+    @media (max-width: 390px) {
+      h1 {
+        font-size: 36px;
+      }
+
+      .badge-inner {
+        font-size: 13px;
+        padding: 8px 18px;
+      }
+
+      .device-inner {
+        padding: 17px 16px;
+      }
+
+      .device-left {
+        gap: 14px;
+      }
+
+      .device-icon {
+        width: 28px;
+        font-size: 26px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-
-<div class="toast" id="toast">
-  <div class="toast-name" id="toast-name"></div>
-  <div class="toast-msg" id="toast-msg"></div>
-</div>
-
-<div class="page-wrap">
-
-  <!-- HERO -->
-  <div class="hero">
-    <div class="brand-logo">SEPHORA</div>
-    <h1>We're looking for people to review Sephora products and receive a <em>$750 gift card!</em></h1>
-
-    <div class="earnings-card">
-      <div class="card-header">
-        <div class="dollar-icon">$</div>
-        <div>Earnings Opportunity</div>
+  <main class="page">
+    <div class="progress-wrap">
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
       </div>
-      <p class="card-body-text">Our reviewers have earned over <span class="earnings-highlight">$1.2 million</span> in gift cards!</p>
-      <div class="progress-bar"><div class="progress-fill"></div></div>
-      <div class="progress-label">85% of reviewers earn the full $750</div>
+      <div class="step-text" id="stepText">Step 1 of 2</div>
     </div>
 
-    <a href="#" class="cta-btn apply-btn">Claim Now</a>
-  </div>
+    <!-- STEP 1 -->
+    <section class="section" id="stepOne">
+      <div class="badge">
+        <div class="badge-inner">Playful Rewards EXCLUSIVE</div>
+      </div>
 
-  <!-- HOW IT WORKS -->
-  <div class="section">
-    <div class="section-heading">How It Works</div>
-    <div class="steps">
-      <div class="step-card">
-        <div class="step-icon">
-          <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      <h1>
+        Get Paid for Testing
+        <br />
+        <span class="gradient-text">Apps &amp; Games</span>
+      </h1>
+
+      <p class="subtext">
+        Earn up to $300+ per offer by testing apps, games &amp; completing surveys. Fast cashouts available!
+      </p>
+
+      <div class="stats-card">
+        <div class="stats-grid">
+          <div class="stat">
+            <div class="stat-icon">👥</div>
+            <div class="stat-value">233K+</div>
+            <div class="stat-label">ACTIVE USERS</div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-icon">$</div>
+            <div class="stat-value">$300+</div>
+            <div class="stat-label">PER OFFER</div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-icon">◷</div>
+            <div class="stat-value">Fast</div>
+            <div class="stat-label">CASHOUTS</div>
+          </div>
         </div>
-        <div><h3>Sign up</h3><p>Enter your email and basic info</p></div>
       </div>
-      <div class="step-card">
-        <div class="step-icon">
-          <svg viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
-        </div>
-        <div><h3>Review Products</h3><p>Provide your opinion for 4-5 products</p></div>
+
+      <h2>What type of phone do you use?</h2>
+
+      <div class="device-list">
+        <button class="device-btn" type="button" onclick="selectDevice()">
+          <div class="device-inner">
+            <div class="device-left">
+              <div class="device-icon">▯</div>
+              <div>
+                <div class="device-title">iPhone</div>
+                <div class="device-sub">Perfect for Playful Rewards!</div>
+              </div>
+            </div>
+            <div class="chevron">›</div>
+          </div>
+        </button>
+
+        <button class="device-btn" type="button" onclick="selectDevice()">
+          <div class="device-inner">
+            <div class="device-left">
+              <div class="device-icon">☁</div>
+              <div>
+                <div class="device-title">Android</div>
+                <div class="device-sub">Works with all Android devices!</div>
+              </div>
+            </div>
+            <div class="chevron">›</div>
+          </div>
+        </button>
       </div>
-      <div class="step-card">
-        <div class="step-icon">
-          <svg viewBox="0 0 24 24"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
-        </div>
-        <div><h3>Get Rewarded</h3><p>Receive your $750 Sephora gift card upon completion</p></div>
+    </section>
+
+    <!-- STEP 2 -->
+    <section class="section hidden" id="stepTwo">
+      <div class="badge">
+        <div class="badge-inner">READY TO EARN!</div>
       </div>
-    </div>
-  </div>
 
-  <!-- STATS -->
-  <div class="stats-row">
-    <div class="stat-item">
-      <div class="stat-icon">★</div>
-      <strong>98%</strong>
-      <span>Satisfaction</span>
-    </div>
-    <div class="stat-item">
-      <div class="stat-icon">◈</div>
-      <strong>3,000+</strong>
-      <span>Products</span>
-    </div>
-  </div>
+      <h1>
+        Start Earning With
+        <br />
+        <span class="gradient-text">Playful Rewards</span>
+      </h1>
 
-  <!-- MID CTA -->
-  <div class="mid-cta">
-    <a href="#" class="cta-btn apply-btn">Claim Now</a>
-  </div>
+      <p class="subtext">
+        Your device is perfect for Playful Rewards! Complete registration to start testing apps, games &amp; surveys with instant cashouts.
+      </p>
 
-  <!-- REVIEWS -->
-  <div class="reviews-section">
-    <div class="reviews-header">
-      <h2>Success Stories From Our Reviewers</h2>
-      <p>Real people earning real rewards for their honest feedback</p>
-    </div>
+      <div class="final-cta-wrap">
+        <button class="final-cta" type="button" onclick="goToAffiliate()">
+          START EARNING NOW!
+        </button>
+      </div>
 
-    <div class="earnings-banner">
-      <span class="dollar-sign">$</span>
-      <span>Our reviewers have earned over<br><strong>$1.2 million in gift cards</strong></span>
-    </div>
+      <div class="journey-card">
+        <div class="journey-title">Your Playful Rewards Earning Journey</div>
 
-    <!-- PAGE 1 -->
-    <div id="reviews-p1">
-      <div class="review-card">
-        <div class="review-top">
-          <div class="reviewer-info">
-            <div class="avatar">SM</div>
+        <div class="journey-list">
+          <div class="journey-item">
+            <div class="journey-number">1</div>
             <div>
-              <div class="reviewer-name">Sophia Mitchell</div>
-              <div class="reviewer-date">2 days ago</div>
+              <div class="journey-heading">Join Playful Rewards</div>
+              <div class="journey-body">
+                Register your account to access thousands of high-paying offers.
+              </div>
             </div>
           </div>
-          <div class="stars">★★★★★</div>
-        </div>
-        <div class="earned-badge">$ Earned: $750</div>
-        <div class="product-tag">Rare Beauty Blush</div>
-        <div class="review-text">The blush gives the most natural flush. Even just a little stays on all day. The review process was so simple, and I received my full $750 gift card right after submitting my feedback. Already planning my next haul!</div>
-      </div>
 
-      <div class="review-card">
-        <div class="review-top">
-          <div class="reviewer-info">
-            <div class="avatar">EK</div>
+          <div class="journey-item">
+            <div class="journey-number">2</div>
             <div>
-              <div class="reviewer-name">Emma Kingston</div>
-              <div class="reviewer-date">1 week ago</div>
+              <div class="journey-heading">Test Apps &amp; Complete Offers</div>
+              <div class="journey-body">
+                Play games, test apps, complete surveys, and earn up to $300+ per offer.
+              </div>
             </div>
           </div>
-          <div class="stars">★★★★☆</div>
         </div>
-        <div class="earned-badge">$ Earned: $750</div>
-        <div class="product-tag">Charlotte Tilbury Pillow Talk</div>
-        <div class="review-text">The lipstick is gorgeous, such a flattering shade that works on every skin tone. I've already bought two more shades. I received the $750 gift card just now tysm ❤️</div>
       </div>
-    </div>
+    </section>
 
-    <!-- PAGE 2 -->
-    <div id="reviews-p2" style="display:none;">
-      <div class="review-card">
-        <div class="review-top">
-          <div class="reviewer-info">
-            <div class="avatar">AS</div>
-            <div>
-              <div class="reviewer-name">Ava Smith</div>
-              <div class="reviewer-date">2 weeks ago</div>
-            </div>
+    <!-- REVIEWS -->
+    <div class="reviews-card">
+      <div class="trustpilot-header">
+        <span class="green">★</span>
+        <span>Trustpilot</span>
+      </div>
+
+      <div class="reviews-list">
+        <div class="review">
+          <div class="review-top">
+            <div class="avatar">CK</div>
+            <div class="review-name">Charlotte Kingston</div>
           </div>
-          <div class="stars">★★★★★</div>
-        </div>
-        <div class="earned-badge">$ Earned: $750</div>
-        <div class="product-tag">Drunk Elephant Serum</div>
-        <div class="review-text">My skin has genuinely never looked better. I use it every morning and the difference is visible within weeks. </div>
-      </div>
-
-      <div class="review-card">
-        <div class="review-top">
-          <div class="reviewer-info">
-            <div class="avatar">JL</div>
-            <div>
-              <div class="reviewer-name">Jessica Liu</div>
-              <div class="reviewer-date">1 month ago</div>
+          <div class="review-body-wrap">
+            <div class="review-stars">
+              ★★★★★ <span class="verified">✓ Verified</span>
             </div>
+            <div class="review-title">The games are fun to play!</div>
+            <p class="review-text">
+              The games are fun to play! They have great offers. All you have to do is complete the required task and you will receive the reward. It's just that simple. The payout method is quick and I received my reward via PayPal the same day too.
+            </p>
           </div>
-          <div class="stars">★★★★★</div>
         </div>
-        <div class="earned-badge">$ Earned: $750</div>
-        <div class="product-tag">Black Opium Perfume</div>
-        <div class="review-text">This perfume is absolutely stunning. The scent lasts all day and I've received so many compliments. I got the $750 gift card for just a few minutes of feedback. Worth every second!!</div>
-      </div>
-    </div>
 
-    <div class="review-pagination">
-      <button class="page-btn active" id="pg1" onclick="showPage(1)">1</button>
-      <button class="page-btn" id="pg2" onclick="showPage(2)">2</button>
-    </div>
-  </div>
-
-  <!-- CATEGORIES -->
-  <div class="categories-section">
-    <span class="cat-badge">Popular Categories</span>
-    <h2>Find Reviews By Category</h2>
-    <p class="sub">Browse thousands of authentic reviews across Sephora's popular product categories</p>
-
-    <div class="cat-grid">
-      <div class="cat-card">
-        <img src="images/skincare.jpg" class="cat-img" alt="Skincare">
-        <div class="cat-info">
-          <div class="cat-info-left"><h3>Skincare</h3><span>2,134 products · 11,209 reviews</span></div>
-          <a href="#" class="cat-browse apply-btn-inline">Browse Reviews →</a>
+        <div class="review">
+          <div class="review-top">
+            <div class="avatar">E</div>
+            <div class="review-name">Ella</div>
+          </div>
+          <div class="review-body-wrap">
+            <div class="review-stars">
+              ★★★★★ <span class="verified">✓ Verified</span>
+            </div>
+            <div class="review-title">They Do Pay!!!</div>
+            <p class="review-text">
+              I've been playing and I actually thought I messed up by not redeeming my points in a timely manner but I was wrong and just made redeemed my first game play for a $50.00 Visa card!!!
+            </p>
+          </div>
         </div>
-      </div>
 
-      <div class="cat-card">
-        <img src="images/makeup.jpg" class="cat-img" alt="Makeup">
-        <div class="cat-info">
-          <div class="cat-info-left"><h3>Makeup</h3><span>1,876 products · 9,543 reviews</span></div>
-          <a href="#" class="cat-browse apply-btn-inline">Browse Reviews →</a>
+        <div class="review">
+          <div class="review-top">
+            <div class="avatar">CL</div>
+            <div class="review-name">Clover</div>
+          </div>
+          <div class="review-body-wrap">
+            <div class="review-stars">
+              ★★★★★ <span class="verified">✓ Verified</span>
+            </div>
+            <div class="review-title">I cashed out my 50$ VISA no problem.</div>
+            <p class="review-text">
+              I cashed out my 50$ VISA no problem. My account had no aftereffects, I recommend as a fun and easy way to make some money.
+            </p>
+          </div>
         </div>
-      </div>
 
-      <div class="cat-card">
-        <img src="images/fragrance.jpg" class="cat-img" alt="Fragrance">
-        <div class="cat-info">
-          <div class="cat-info-left"><h3>Fragrance</h3><span>987 products · 5,321 reviews</span></div>
-          <a href="#" class="cat-browse apply-btn-inline">Browse Reviews →</a>
-        </div>
-      </div>
-
-      <div class="cat-card">
-        <img src="images/haircare.jpg" class="cat-img" alt="Haircare">
-        <div class="cat-info">
-          <div class="cat-info-left"><h3>Haircare</h3><span>1,234 products · 7,102 reviews</span></div>
-          <a href="#" class="cat-browse apply-btn-inline">Browse Reviews →</a>
-        </div>
-      </div>
-
-      <div class="cat-card">
-        <img src="images/tools.jpg" class="cat-img" alt="Tools">
-        <div class="cat-info">
-          <div class="cat-info-left"><h3>Tools &amp; Brushes</h3><span>654 products · 3,876 reviews</span></div>
-          <a href="#" class="cat-browse apply-btn-inline">Browse Reviews →</a>
-        </div>
-      </div>
-
-      <div class="cat-card">
-        <img src="images/body.jpg" class="cat-img" alt="Bath and Body">
-        <div class="cat-info">
-          <div class="cat-info-left"><h3>Bath &amp; Body</h3><span>765 products · 4,231 reviews</span></div>
-          <a href="#" class="cat-browse apply-btn-inline">Browse Reviews →</a>
+        <div class="review">
+          <div class="review-top">
+            <div class="avatar">HM</div>
+            <div class="review-name">Haley Montanez</div>
+          </div>
+          <div class="review-body-wrap">
+            <div class="review-stars">
+              ★★★★★ <span class="verified">✓ Verified</span>
+            </div>
+            <div class="review-title">Always very accurate!</div>
+            <p class="review-text">
+              Send me my money always and is very accurate and whenever I have a problem the online helpline is super helpful! Recommended side gig for people on their phones.
+            </p>
+          </div>
         </div>
       </div>
     </div>
+  </main>
 
-    <div class="view-all-wrap">
-      <a href="#" class="cta-btn apply-btn">View All Categories</a>
-    </div>
-  </div>
+  <script>
+    var AFFILIATE_URL = "https://giftclick.org/aff_c?offer_id=2956&aff_id=150406";
 
-  <!-- JOIN -->
-  <div class="join-section">
-    <div class="join-badge">Join Our Community</div>
-    <h2>Become a Trusted Sephora Reviewer Today</h2>
-    <p>Help millions of shoppers make confident beauty decisions while earning rewards for your honest contributions.</p>
+    function selectDevice() {
+      document.getElementById("stepOne").classList.add("hidden");
+      document.getElementById("stepTwo").classList.remove("hidden");
+      document.getElementById("progressFill").style.width = "100%";
+      document.getElementById("stepText").textContent = "Step 2 of 2";
+      window.scrollTo(0, 0);
+    }
 
-    <div class="join-features">
-      <div class="join-feature">
-        <div class="join-feature-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        </div>
-        <div class="join-feature-text">
-          <strong>Share Your Experience</strong>
-          <span>Post feedback about your beauty purchases</span>
-        </div>
-      </div>
-      <div class="join-feature">
-        <div class="join-feature-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-        </div>
-        <div class="join-feature-text">
-          <strong>Quick &amp; Easy</strong>
-          <span>Our simple review process takes less than 15 minutes</span>
-        </div>
-      </div>
-      <div class="join-feature">
-        <div class="join-feature-icon">
-          <svg viewBox="0 0 24 24"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/></svg>
-        </div>
-        <div class="join-feature-text">
-          <strong>Earn Rewards</strong>
-          <span>Get points for every helpful review you submit</span>
-        </div>
-      </div>
-      <div class="join-feature">
-        <div class="join-feature-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <div class="join-feature-text">
-          <strong>Trusted Platform</strong>
-          <span>Join our community of 25,000+ verified reviewers</span>
-        </div>
-      </div>
-    </div>
+    function getAdParam() {
+      var params = new URLSearchParams(window.location.search);
+      return params.get("ad");
+    }
 
-    <a href="#" class="cta-btn-white apply-btn">Claim Now</a>
-  </div>
+    function goToAffiliate() {
+      var adValue = getAdParam();
+      var finalUrl = AFFILIATE_URL;
 
-  <!-- FOOTER -->
-  <div class="footer">
-    <p>© 2026 Sephora Reviewer Program. All rights reserved.</p>
-  </div>
+      if (adValue) {
+        finalUrl += "&source=" + encodeURIComponent(adValue);
+      }
 
-</div>
-
-<script>
-  const BASE_URL = 'https://giftclick.org/aff_c?offer_id=4329&aff_id=150406';
-
-  function getOfferURL() {
-    const params = new URLSearchParams(window.location.search);
-    const ad = params.get('ad');
-    return ad ? BASE_URL + '&source=' + encodeURIComponent(ad) : BASE_URL;
-  }
-
-  function handleClick(e) {
-    e.preventDefault();
-    window.location.href = getOfferURL();
-  }
-
-  document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.apply-btn, .apply-btn-inline').forEach(function(el) {
-      el.href = getOfferURL();
-      el.addEventListener('click', handleClick);
-    });
-  });
-
-  function showPage(n) {
-    document.getElementById('reviews-p1').style.display = n === 1 ? 'block' : 'none';
-    document.getElementById('reviews-p2').style.display = n === 2 ? 'block' : 'none';
-    document.getElementById('pg1').className = 'page-btn' + (n === 1 ? ' active' : '');
-    document.getElementById('pg2').className = 'page-btn' + (n === 2 ? ' active' : '');
-  }
-
-  const toasts = [
-    { name: 'Isabella from Sydney',  msg: 'just earned <strong>$750</strong> reviewing products!' },
-    { name: 'Chloe from Melbourne',  msg: 'just earned <strong>$750</strong> reviewing products!' },
-    { name: 'Mia from Brisbane',     msg: 'just applied for the <strong>$550 gift card</strong>!' },
-    { name: 'Zoe from Sydney',        msg: 'just earned <strong>$620</strong> reviewing products!' },
-    { name: 'Lily from Adelaide',    msg: 'just earned <strong>$750</strong> reviewing products!' },
-    { name: 'Grace from Perth', msg: 'just applied for the <strong>$750 gift card</strong>!' },
-    { name: 'Ava from Canberra',     msg: 'just earned <strong>$600</strong> reviewing products!' },
-    { name: 'Sophie from Newcastle', msg: 'just earned <strong>$750</strong> reviewing products!' },
-       { name: 'Charlotte from Gold Coast',        msg: 'just earned <strong>$550</strong> reviewing products!' },
-    { name: 'Sophia from Brisbane',    msg: 'just earned <strong>$750</strong> reviewing products!' },
-  ];
-
-  let toastIndex = 0;
-  const toastEl = document.getElementById('toast');
-  const toastName = document.getElementById('toast-name');
-  const toastMsg = document.getElementById('toast-msg');
-
-  function showToast() {
-    const t = toasts[toastIndex % toasts.length];
-    toastName.textContent = t.name;
-    toastMsg.innerHTML = t.msg;
-    toastEl.classList.add('show');
-    toastIndex++;
-    setTimeout(function() { toastEl.classList.remove('show'); }, 4500);
-  }
-
-  setTimeout(function() { showToast(); setInterval(showToast, 9000); }, 3000);
-</script>
+      window.location.href = finalUrl;
+    }
+  </script>
 </body>
 </html>
