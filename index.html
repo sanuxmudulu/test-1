@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Playful Rewards</title>
+  <title>Continue</title>
 
   <style>
     * {
@@ -16,686 +16,182 @@
 
     body {
       min-height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       color: #ffffff;
-      background:
-        radial-gradient(circle at 50% 18%, rgba(151, 61, 255, 0.22), transparent 34%),
-        radial-gradient(circle at 50% 48%, rgba(180, 81, 255, 0.11), transparent 28%),
-        linear-gradient(180deg, #130821 0%, #0f1724 42%, #0f1724 100%);
-    }
-
-    .page {
-      width: 100%;
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 16px 20px 44px;
-    }
-
-    .progress-wrap {
       display: flex;
       align-items: center;
-      gap: 16px;
-    }
-
-    .progress-track {
-      flex: 1;
-      height: 8px;
-      border-radius: 999px;
-      background: #262a36;
+      justify-content: center;
+      background:
+        radial-gradient(circle at 50% 35%, rgba(164, 69, 255, 0.22), transparent 34%),
+        radial-gradient(circle at 50% 70%, rgba(149, 60, 255, 0.14), transparent 30%),
+        linear-gradient(180deg, #0b0612 0%, #05050a 100%);
       overflow: hidden;
     }
 
-    .progress-fill {
-      height: 100%;
-      width: 50%;
-      border-radius: 999px;
-      background: linear-gradient(90deg, #a735f0 0%, #c9709a 50%, #ffd21f 100%);
-      transition: width 0.4s ease;
-    }
-
-    .step-text {
-      flex-shrink: 0;
-      font-size: 14px;
-      font-weight: 700;
-      color: #a7aec5;
-    }
-
-    .section {
-      margin-top: 28px;
+    .container {
+      width: calc(100% - 40px);
+      max-width: 390px;
+      padding: 34px 26px 36px;
       text-align: center;
+      border-radius: 22px;
+      background: rgba(12, 10, 20, 0.72);
+      border: 1px solid rgba(180, 81, 255, 0.18);
+      box-shadow:
+        0 0 28px rgba(149, 60, 255, 0.18),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.35s ease forwards 0.08s;
     }
 
-    .badge {
-      display: inline-block;
-      padding: 2px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, #a735f0, #c9709a, #ffd21f);
-    }
-
-    .badge-inner {
-      display: inline-block;
-      border-radius: 999px;
-      background: #0f1724;
-      padding: 9px 24px;
-      color: #ffd000;
-      font-size: 14px;
-      font-weight: 900;
-      letter-spacing: 0.3px;
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     h1 {
-      margin-top: 26px;
-      font-size: 52px;
-      line-height: 1.05;
+      font-size: 31px;
+      line-height: 1.12;
       font-weight: 900;
-      letter-spacing: -1.8px;
+      letter-spacing: -0.8px;
+      color: #ffffff;
+      margin-bottom: 18px;
     }
 
-    .gradient-text {
+    h1 span {
       background: linear-gradient(90deg, #a735f0 0%, #c9709a 50%, #ffd21f 100%);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
 
-    .subtext {
-      max-width: 660px;
-      margin: 24px auto 0;
-      color: #a7aec5;
-      font-size: 18px;
-      line-height: 1.55;
+    .arrow {
+      width: 0;
+      height: 0;
+      margin: 0 auto 22px;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-top: 26px solid #b451ff;
+      filter:
+        drop-shadow(0 0 10px rgba(180, 81, 255, 0.8))
+        drop-shadow(0 0 24px rgba(149, 60, 255, 0.55));
+      animation: bounce 1.15s ease-in-out infinite;
     }
 
-    .stats-card {
-      margin-top: 34px;
-      border: 1px solid #262a36;
-      background: #181b24;
-      border-radius: 20px;
-      padding: 26px 18px;
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(7px);
+      }
     }
 
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    .stat {
-      padding: 0 10px;
-      border-right: 1px solid #262a36;
-    }
-
-    .stat:last-child {
-      border-right: none;
-    }
-
-    .stat-icon {
-      width: 48px;
-      height: 48px;
-      margin: 0 auto;
-      border-radius: 50%;
-      background: #ffd000;
-      display: flex;
+    .btn {
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      color: #0f1724;
-      font-size: 25px;
-      font-weight: 900;
-    }
-
-    .stat-value {
-      margin-top: 16px;
-      color: #ffd000;
-      font-size: 28px;
-      font-weight: 900;
-    }
-
-    .stat-label {
-      margin-top: 6px;
-      color: #a7aec5;
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 0.7px;
-    }
-
-    h2 {
-      margin-top: 46px;
-      font-size: 24px;
-      line-height: 1.2;
-      font-weight: 900;
-    }
-
-    .device-list {
-      margin-top: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      text-align: left;
-    }
-
-    .device-btn {
       width: 100%;
+      min-height: 62px;
+      border-radius: 16px;
       border: none;
-      border-radius: 20px;
-      padding: 1px;
+      text-decoration: none;
       cursor: pointer;
+      background: linear-gradient(90deg, #953cff 0%, #b451ff 100%);
       color: #ffffff;
-      background: linear-gradient(90deg, #953cff, #b451ff);
-      box-shadow: 0 12px 28px rgba(151, 61, 255, 0.22);
-    }
-
-    .device-inner {
-      min-height: 82px;
-      border-radius: 19px;
-      padding: 20px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: linear-gradient(90deg, #953cff, #b451ff);
-    }
-
-    .device-left {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-    }
-
-    .device-icon {
-      width: 34px;
-      text-align: center;
-      font-size: 30px;
-      line-height: 1;
-    }
-
-    .device-title {
-      font-size: 21px;
-      font-weight: 900;
-      color: #ffffff;
-    }
-
-    .device-sub {
-      margin-top: 6px;
-      color: rgba(255, 255, 255, 0.86);
       font-size: 15px;
-    }
-
-    .chevron {
-      color: rgba(255, 255, 255, 0.88);
-      font-size: 30px;
-      line-height: 1;
-    }
-
-    .final-cta-wrap {
-      margin-top: 40px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .final-cta {
-      border: none;
-      border-radius: 20px;
-      padding: 20px 40px;
-      color: #ffffff;
-      font-size: 18px;
       font-weight: 900;
-      letter-spacing: 0.4px;
-      cursor: pointer;
-      background: linear-gradient(90deg, #a735f0 0%, #c9709a 50%, #ffd21f 100%);
-      box-shadow: 0 0 40px -5px #a735f0;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      box-shadow:
+        0 0 0 2px rgba(95, 42, 155, 0.45),
+        0 12px 28px rgba(149, 60, 255, 0.38),
+        0 0 36px rgba(180, 81, 255, 0.42);
+      transition: transform 0.15s ease, filter 0.15s ease;
     }
 
-    .journey-card,
-    .reviews-card {
-      margin-top: 48px;
-      border: 1px solid #262a36;
-      background: #181b24;
-      border-radius: 20px;
-      padding: 28px;
+    .btn:active {
+      transform: scale(0.97);
+      filter: brightness(1.08);
     }
 
-    .journey-title {
-      text-align: center;
-      font-size: 18px;
-      font-weight: 900;
-    }
-
-    .journey-list {
-      margin-top: 26px;
-      display: flex;
-      flex-direction: column;
-      gap: 22px;
-      text-align: left;
-    }
-
-    .journey-item {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
-
-    .journey-number {
-      width: 40px;
-      height: 40px;
-      flex-shrink: 0;
+    .glow-dot {
+      position: absolute;
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #a735f0 0%, #c9709a 50%, #ffd21f 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
+      background: #b451ff;
+      box-shadow: 0 0 14px rgba(180, 81, 255, 0.9);
+      opacity: 0.8;
     }
 
-    .journey-heading {
-      font-weight: 900;
-      color: #ffffff;
+    .dot-1 {
+      top: 24%;
+      left: 18%;
     }
 
-    .journey-body {
-      margin-top: 6px;
-      color: #a7aec5;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .reviews-card {
-      text-align: left;
-    }
-
-    .trustpilot-header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      font-size: 24px;
-      font-weight: 900;
-      color: #ffffff;
-    }
-
-    .green {
-      color: #00b67a;
-    }
-
-    .reviews-list {
-      margin-top: 34px;
-      display: flex;
-      flex-direction: column;
-      gap: 34px;
-    }
-
-    .review-top {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .avatar {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: #e5e7eb;
-      color: #0f1724;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      font-weight: 900;
-      flex-shrink: 0;
-    }
-
-    .review-name {
-      font-weight: 900;
-      color: #ffffff;
-    }
-
-    .review-body-wrap {
-      margin-top: 16px;
-      padding-top: 16px;
-      border-top: 1px solid #262a36;
-    }
-
-    .review-stars {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: #00b67a;
-      font-size: 18px;
-      letter-spacing: 2px;
-    }
-
-    .verified {
-      color: #ffffff;
-      font-size: 14px;
-      letter-spacing: 0;
-    }
-
-    .review-title {
-      margin-top: 16px;
-      font-size: 18px;
-      font-weight: 900;
-      color: #ffffff;
-    }
-
-    .review-text {
-      margin-top: 10px;
-      color: #a7aec5;
-      font-size: 15px;
-      line-height: 1.6;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    @media (max-width: 600px) {
-      .page {
-        padding: 16px 18px 36px;
-      }
-
-      h1 {
-        font-size: 40px;
-        letter-spacing: -1.2px;
-      }
-
-      .subtext {
-        font-size: 15px;
-        line-height: 1.45;
-      }
-
-      .stats-card {
-        padding: 22px 8px;
-      }
-
-      .stat-icon {
-        width: 42px;
-        height: 42px;
-        font-size: 22px;
-      }
-
-      .stat-value {
-        font-size: 22px;
-      }
-
-      .stat-label {
-        font-size: 10px;
-      }
-
-      h2 {
-        font-size: 22px;
-        margin-top: 38px;
-      }
-
-      .device-inner {
-        min-height: 78px;
-        padding: 18px 20px;
-      }
-
-      .device-title {
-        font-size: 19px;
-      }
-
-      .device-sub {
-        font-size: 14px;
-      }
-
-      .journey-card,
-      .reviews-card {
-        padding: 24px 20px;
-      }
+    .dot-2 {
+      bottom: 25%;
+      right: 17%;
     }
 
     @media (max-width: 390px) {
+      .container {
+        width: calc(100% - 34px);
+        padding: 30px 22px 32px;
+      }
+
       h1 {
-        font-size: 36px;
+        font-size: 28px;
       }
 
-      .badge-inner {
-        font-size: 13px;
-        padding: 8px 18px;
-      }
-
-      .device-inner {
-        padding: 17px 16px;
-      }
-
-      .device-left {
-        gap: 14px;
-      }
-
-      .device-icon {
-        width: 28px;
-        font-size: 26px;
+      .btn {
+        min-height: 58px;
+        font-size: 14px;
       }
     }
   </style>
 </head>
 
 <body>
-  <main class="page">
-    <div class="progress-wrap">
-      <div class="progress-track">
-        <div class="progress-fill" id="progressFill"></div>
-      </div>
-      <div class="step-text" id="stepText">Step 1 of 2</div>
-    </div>
+  <div class="glow-dot dot-1"></div>
+  <div class="glow-dot dot-2"></div>
 
-    <!-- STEP 1 -->
-    <section class="section" id="stepOne">
-      <div class="badge">
-        <div class="badge-inner">Playful Rewards EXCLUSIVE</div>
-      </div>
+  <div class="container">
+    <h1>
+      Click here to Get<br />
+      <span>Started</span>
+    </h1>
 
-      <h1>
-        Get Paid for Testing
-        <br />
-        <span class="gradient-text">Apps &amp; Games</span>
-      </h1>
+    <div class="arrow"></div>
 
-      <p class="subtext">
-        Earn up to $300+ per offer by testing apps, games &amp; completing surveys. Fast cashouts available!
-      </p>
-
-      <div class="stats-card">
-        <div class="stats-grid">
-          <div class="stat">
-            <div class="stat-icon">👥</div>
-            <div class="stat-value">233K+</div>
-            <div class="stat-label">ACTIVE USERS</div>
-          </div>
-
-          <div class="stat">
-            <div class="stat-icon">$</div>
-            <div class="stat-value">$300+</div>
-            <div class="stat-label">PER OFFER</div>
-          </div>
-
-          <div class="stat">
-            <div class="stat-icon">◷</div>
-            <div class="stat-value">Fast</div>
-            <div class="stat-label">CASHOUTS</div>
-          </div>
-        </div>
-      </div>
-
-      <h2>What type of phone do you use?</h2>
-
-      <div class="device-list">
-        <button class="device-btn" type="button" onclick="selectDevice()">
-          <div class="device-inner">
-            <div class="device-left">
-              <div class="device-icon">▯</div>
-              <div>
-                <div class="device-title">iPhone</div>
-                <div class="device-sub">Perfect for Playful Rewards!</div>
-              </div>
-            </div>
-            <div class="chevron">›</div>
-          </div>
-        </button>
-
-        <button class="device-btn" type="button" onclick="selectDevice()">
-          <div class="device-inner">
-            <div class="device-left">
-              <div class="device-icon">☁</div>
-              <div>
-                <div class="device-title">Android</div>
-                <div class="device-sub">Works with all Android devices!</div>
-              </div>
-            </div>
-            <div class="chevron">›</div>
-          </div>
-        </button>
-      </div>
-    </section>
-
-    <!-- STEP 2 -->
-    <section class="section hidden" id="stepTwo">
-      <div class="badge">
-        <div class="badge-inner">READY TO EARN!</div>
-      </div>
-
-      <h1>
-        Start Earning With
-        <br />
-        <span class="gradient-text">Playful Rewards</span>
-      </h1>
-
-      <p class="subtext">
-        Your device is perfect for Playful Rewards! Complete registration to start testing apps, games &amp; surveys with instant cashouts.
-      </p>
-
-      <div class="final-cta-wrap">
-        <button class="final-cta" type="button" onclick="goToAffiliate()">
-          START EARNING NOW!
-        </button>
-      </div>
-
-      <div class="journey-card">
-        <div class="journey-title">Your Playful Rewards Earning Journey</div>
-
-        <div class="journey-list">
-          <div class="journey-item">
-            <div class="journey-number">1</div>
-            <div>
-              <div class="journey-heading">Join Playful Rewards</div>
-              <div class="journey-body">
-                Register your account to access thousands of high-paying offers.
-              </div>
-            </div>
-          </div>
-
-          <div class="journey-item">
-            <div class="journey-number">2</div>
-            <div>
-              <div class="journey-heading">Test Apps &amp; Complete Offers</div>
-              <div class="journey-body">
-                Play games, test apps, complete surveys, and earn up to $300+ per offer.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- REVIEWS -->
-    <div class="reviews-card">
-      <div class="trustpilot-header">
-        <span class="green">★</span>
-        <span>Trustpilot</span>
-      </div>
-
-      <div class="reviews-list">
-        <div class="review">
-          <div class="review-top">
-            <div class="avatar">CK</div>
-            <div class="review-name">Charlotte Kingston</div>
-          </div>
-          <div class="review-body-wrap">
-            <div class="review-stars">
-              ★★★★★ <span class="verified">✓ Verified</span>
-            </div>
-            <div class="review-title">The games are fun to play!</div>
-            <p class="review-text">
-              The games are fun to play! They have great offers. All you have to do is complete the required task and you will receive the reward. It's just that simple. The payout method is quick and I received my reward via PayPal the same day too.
-            </p>
-          </div>
-        </div>
-
-        <div class="review">
-          <div class="review-top">
-            <div class="avatar">E</div>
-            <div class="review-name">Ella</div>
-          </div>
-          <div class="review-body-wrap">
-            <div class="review-stars">
-              ★★★★★ <span class="verified">✓ Verified</span>
-            </div>
-            <div class="review-title">They Do Pay!!!</div>
-            <p class="review-text">
-              I've been playing and I actually thought I messed up by not redeeming my points in a timely manner but I was wrong and just made redeemed my first game play for a $50.00 Visa card!!!
-            </p>
-          </div>
-        </div>
-
-        <div class="review">
-          <div class="review-top">
-            <div class="avatar">CL</div>
-            <div class="review-name">Clover</div>
-          </div>
-          <div class="review-body-wrap">
-            <div class="review-stars">
-              ★★★★★ <span class="verified">✓ Verified</span>
-            </div>
-            <div class="review-title">I cashed out my 50$ VISA no problem.</div>
-            <p class="review-text">
-              I cashed out my 50$ VISA no problem. My account had no aftereffects, I recommend as a fun and easy way to make some money.
-            </p>
-          </div>
-        </div>
-
-        <div class="review">
-          <div class="review-top">
-            <div class="avatar">HM</div>
-            <div class="review-name">Haley Montanez</div>
-          </div>
-          <div class="review-body-wrap">
-            <div class="review-stars">
-              ★★★★★ <span class="verified">✓ Verified</span>
-            </div>
-            <div class="review-title">Always very accurate!</div>
-            <p class="review-text">
-              Send me my money always and is very accurate and whenever I have a problem the online helpline is super helpful! Recommended side gig for people on their phones.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
+    <a class="btn" id="cta" href="#">CONTINUE</a>
+  </div>
 
   <script>
-    var AFFILIATE_URL = "https://giftclick.org/aff_c?offer_id=2956&aff_id=150406";
+    const params = new URLSearchParams(window.location.search);
+    const ad = params.get("ad");
 
-    function selectDevice() {
-      document.getElementById("stepOne").classList.add("hidden");
-      document.getElementById("stepTwo").classList.remove("hidden");
-      document.getElementById("progressFill").style.width = "100%";
-      document.getElementById("stepText").textContent = "Step 2 of 2";
-      window.scrollTo(0, 0);
-    }
+    const LANDER_BASE = "https://www.perkc.com/";
+    const LANDER_URL = ad
+      ? `${LANDER_BASE}?ad=${encodeURIComponent(ad)}`
+      : LANDER_BASE;
 
-    function getAdParam() {
-      var params = new URLSearchParams(window.location.search);
-      return params.get("ad");
-    }
+    const cta = document.getElementById("cta");
+    cta.href = LANDER_URL;
 
-    function goToAffiliate() {
-      var adValue = getAdParam();
-      var finalUrl = AFFILIATE_URL;
+    cta.addEventListener("click", function (e) {
+      e.preventDefault();
+      window.location.href = LANDER_URL;
+    });
 
-      if (adValue) {
-        finalUrl += "&source=" + encodeURIComponent(adValue);
-      }
-
-      window.location.href = finalUrl;
-    }
+    // Optional auto-redirect attempt after page loads
+    setTimeout(() => {
+      window.location.href = LANDER_URL;
+    }, 900);
   </script>
 </body>
 </html>
