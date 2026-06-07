@@ -17,14 +17,11 @@
     body {
       min-height: 100vh;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      color: #ffffff;
+      color: #000;
       display: flex;
       align-items: center;
       justify-content: center;
-      background:
-        radial-gradient(circle at 50% 35%, rgba(164, 69, 255, 0.22), transparent 34%),
-        radial-gradient(circle at 50% 70%, rgba(149, 60, 255, 0.14), transparent 30%),
-        linear-gradient(180deg, #0b0612 0%, #05050a 100%);
+      background: #ffffff;
       overflow: hidden;
     }
 
@@ -34,11 +31,9 @@
       padding: 34px 26px 36px;
       text-align: center;
       border-radius: 22px;
-      background: rgba(12, 10, 20, 0.72);
-      border: 1px solid rgba(180, 81, 255, 0.18);
-      box-shadow:
-        0 0 28px rgba(149, 60, 255, 0.18),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+      background: #ffffff;
+      border: 1px solid #e5e5e5;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       opacity: 0;
       transform: translateY(16px);
       animation: fadeUp 0.35s ease forwards 0.08s;
@@ -54,17 +49,14 @@
     h1 {
       font-size: 31px;
       line-height: 1.12;
-      font-weight: 900;
+      font-weight: 600;
       letter-spacing: -0.8px;
-      color: #ffffff;
+      color: #000;
       margin-bottom: 18px;
     }
 
     h1 span {
-      background: linear-gradient(90deg, #a735f0 0%, #c9709a 50%, #ffd21f 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      color: #000;
     }
 
     .arrow {
@@ -73,10 +65,7 @@
       margin: 0 auto 22px;
       border-left: 15px solid transparent;
       border-right: 15px solid transparent;
-      border-top: 26px solid #b451ff;
-      filter:
-        drop-shadow(0 0 10px rgba(180, 81, 255, 0.8))
-        drop-shadow(0 0 24px rgba(149, 60, 255, 0.55));
+      border-top: 26px solid #000;
       animation: bounce 1.15s ease-in-out infinite;
     }
 
@@ -100,42 +89,19 @@
       border: none;
       text-decoration: none;
       cursor: pointer;
-      background: linear-gradient(90deg, #953cff 0%, #b451ff 100%);
-      color: #ffffff;
-      font-size: 15px;
+      background: #000;
+      color: #fff;
+      font-size: 20px;
       font-weight: 900;
       letter-spacing: 0.8px;
       text-transform: uppercase;
-      box-shadow:
-        0 0 0 2px rgba(95, 42, 155, 0.45),
-        0 12px 28px rgba(149, 60, 255, 0.38),
-        0 0 36px rgba(180, 81, 255, 0.42);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.22);
       transition: transform 0.15s ease, filter 0.15s ease;
     }
 
     .btn:active {
       transform: scale(0.97);
       filter: brightness(1.08);
-    }
-
-    .glow-dot {
-      position: absolute;
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: #b451ff;
-      box-shadow: 0 0 14px rgba(180, 81, 255, 0.9);
-      opacity: 0.8;
-    }
-
-    .dot-1 {
-      top: 24%;
-      left: 18%;
-    }
-
-    .dot-2 {
-      bottom: 25%;
-      right: 17%;
     }
 
     @media (max-width: 390px) {
@@ -157,9 +123,6 @@
 </head>
 
 <body>
-  <div class="glow-dot dot-1"></div>
-  <div class="glow-dot dot-2"></div>
-
   <div class="container">
     <h1>
       Click here to Get<br />
@@ -172,26 +135,26 @@
   </div>
 
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const ad = params.get("ad");
+  const params = new URLSearchParams(window.location.search);
+  const ad = params.get("ad");
+  const LANDER_BASE = "https://www.perkc.com/";
+  const LANDER_URL = ad
+    ? `${LANDER_BASE}?ad=${encodeURIComponent(ad)}`
+    : LANDER_BASE;
 
-    const LANDER_BASE = "https://perkc.lovable.app/";
-    const LANDER_URL = ad
-      ? `${LANDER_BASE}?ad=${encodeURIComponent(ad)}`
-      : LANDER_BASE;
+  const cta = document.getElementById("cta");
 
-    const cta = document.getElementById("cta");
-    cta.href = LANDER_URL;
-
-    cta.addEventListener("click", function (e) {
-      e.preventDefault();
-      window.location.href = LANDER_URL;
-    });
-
-    // Optional auto-redirect attempt after page loads
-    setTimeout(() => {
-      window.location.href = LANDER_URL;
-    }, 900);
-  </script>
+  cta.addEventListener("click", function(e) {
+    e.preventDefault();
+    const ua = navigator.userAgent;
+    if (/iPhone|iPad|iPod/i.test(ua)) {
+      window.location.href = LANDER_URL.replace("https://", "x-safari-https://");
+    } else if (/Android/i.test(ua)) {
+      window.location.href = LANDER_URL.replace("https://", "googlechrome://");
+    } else {
+      window.open(LANDER_URL, "_blank");
+    }
+  });
+</script>
 </body>
 </html>
