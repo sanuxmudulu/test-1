@@ -4,23 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Continue</title>
-
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const ad = params.get("ad");
-
-    const LANDER_BASE = "https://www.perkc.com/";
-
-    const LANDER_URL = ad
-      ? `${LANDER_BASE}?ad=${encodeURIComponent(ad)}`
-      : LANDER_BASE;
-
-    // Very quick auto redirect only for ttauto
-    if (ad === "ttauto") {
-      window.location.replace(LANDER_URL);
-    }
-  </script>
+  <title>$750 Apple Cash</title>
 
   <style>
     * {
@@ -30,133 +14,362 @@
       -webkit-tap-highlight-color: transparent;
     }
 
+    html,
     body {
-  min-height: 100vh;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-  color: #000;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  background: #ffffff;
-  overflow: hidden;
-  padding-top: 120px;
-}
+      width: 100%;
+      min-height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      background: #f7f7f7;
+      color: #000;
+    }
 
-    .container {
-      width: calc(100% - 40px);
-      max-width: 390px;
-      padding: 34px 26px 36px;
+    body {
+      overflow-x: hidden;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 430px;
+      margin: 0 auto;
+      min-height: 100vh;
+      background: #f7f7f7;
+      padding: 42px 26px 70px;
+    }
+
+    .hero {
       text-align: center;
-      border-radius: 22px;
-      background: #ffffff;
-      border: 1px solid #e5e5e5;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      opacity: 0;
-      transform: translateY(16px);
-      animation: fadeUp 0.35s ease forwards 0.08s;
     }
 
-    @keyframes fadeUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    h1 {
-      font-size: 31px;
-      line-height: 1.12;
-      font-weight: 600;
+    .hero h1 {
+      font-size: 30px;
+      line-height: 1.08;
+      font-weight: 800;
       letter-spacing: -0.8px;
       color: #000;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
-    h1 span {
-      color: #000;
+    .hero p {
+      font-size: 17px;
+      line-height: 1.35;
+      font-weight: 400;
+      color: #66666b;
+      margin-bottom: 28px;
+      white-space: nowrap;
     }
 
-    .arrow {
-      width: 0;
-      height: 0;
-      margin: 0 auto 22px;
-      border-left: 15px solid transparent;
-      border-right: 15px solid transparent;
-      border-top: 26px solid #000;
-      animation: bounce 1.15s ease-in-out infinite;
-    }
-
-    @keyframes bounce {
-      0%, 100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(7px);
-      }
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+    .card-wrap {
       width: 100%;
-      min-height: 62px;
+      margin-bottom: 24px;
+    }
+
+    .apple-card {
+      display: block;
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+    }
+
+    .cta {
+      width: 100%;
+      min-height: 64px;
       border-radius: 16px;
       border: none;
+      outline: none;
+      background: #050505;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-decoration: none;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.2px;
+      margin-bottom: 40px;
       cursor: pointer;
-      background: #000;
-      color: #fff;
-      font-size: 20px;
-      font-weight: 900;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.22);
+      box-shadow: none;
       transition: transform 0.15s ease, filter 0.15s ease;
     }
 
-    .btn:active {
-      transform: scale(0.97);
+    .cta span {
+      display: inline-block;
+      margin-left: 13px;
+      font-size: 27px;
+      line-height: 1;
+      transform: translateY(-1px);
+    }
+
+    .cta:active {
+      transform: scale(0.98);
       filter: brightness(1.08);
     }
 
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 4px 22px;
+    }
+
+    .check-icon {
+      width: 30px;
+      height: 30px;
+      border: 2px solid #000;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 19px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .section-title h2 {
+      font-size: 24px;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #000;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .step {
+      min-height: 82px;
+      border-radius: 16px;
+      background: #ffffff;
+      border: 1px solid #e9e9e9;
+      display: flex;
+      align-items: center;
+      padding: 18px 20px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.025);
+    }
+
+    .icon-box {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      background: #fdfdfd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-right: 18px;
+    }
+
+    .icon-box svg {
+      width: 27px;
+      height: 27px;
+      stroke: #111;
+      stroke-width: 2.4;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .step-text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .step-text h3 {
+      font-size: 18px;
+      line-height: 1.18;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      color: #000;
+      margin-bottom: 4px;
+    }
+
+    .step-text p {
+      font-size: 16px;
+      line-height: 1.18;
+      font-weight: 400;
+      color: #6d6d72;
+    }
+
+    .step-number {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #000;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 800;
+      flex-shrink: 0;
+      margin-left: 14px;
+    }
+
     @media (max-width: 390px) {
-      .container {
-        width: calc(100% - 34px);
-        padding: 30px 22px 32px;
+      .page {
+        padding: 42px 25px 70px;
       }
 
-      h1 {
+      .hero h1 {
         font-size: 28px;
       }
 
-      .btn {
-        min-height: 58px;
-        font-size: 14px;
+      .hero p {
+        font-size: 16px;
+      }
+
+      .cta {
+        min-height: 62px;
+        font-size: 17px;
+      }
+
+      .section-title h2 {
+        font-size: 23px;
+      }
+
+      .step {
+        padding: 17px 18px;
+      }
+
+      .icon-box {
+        width: 52px;
+        height: 52px;
+        margin-right: 16px;
+      }
+
+      .step-text h3 {
+        font-size: 17px;
+      }
+
+      .step-text p {
+        font-size: 15px;
+      }
+    }
+
+    @media (max-width: 350px) {
+      .page {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .hero p {
+        white-space: normal;
+      }
+
+      .step {
+        padding: 16px;
+      }
+
+      .icon-box {
+        width: 48px;
+        height: 48px;
+        margin-right: 13px;
+      }
+
+      .step-number {
+        margin-left: 10px;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <h1>
-      Click here to Get<br />
-      <span>Started</span>
-    </h1>
+  <main class="page">
+    <section class="hero">
+      <h1>$750 Apple Cash</h1>
+      <p>Complete simple tasks &amp; get rewarded instantly</p>
 
-    <div class="arrow"></div>
+      <div class="card-wrap">
+        <img class="apple-card" src="apple.png" alt="$750 Apple Cash" />
+      </div>
 
-    <a class="btn" id="cta" href="#">CONTINUE</a>
-  </div>
+      <a class="cta" id="cta" href="#">
+        Get Started <span>→</span>
+      </a>
+    </section>
+
+    <section class="how-it-works">
+      <div class="section-title">
+        <div class="check-icon">✓</div>
+        <h2>How It Works</h2>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="icon-box">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+              <path d="M3 7l9 6 9-6"></path>
+            </svg>
+          </div>
+
+          <div class="step-text">
+            <h3>Enter your email address</h3>
+            <p>For notifications and rewards</p>
+          </div>
+
+          <div class="step-number">1</div>
+        </div>
+
+        <div class="step">
+          <div class="icon-box">
+            <svg viewBox="0 0 24 24">
+              <rect x="7" y="2.5" width="10" height="19" rx="2"></rect>
+              <path d="M12 18h.01"></path>
+            </svg>
+          </div>
+
+          <div class="step-text">
+            <h3>Complete 2-3 simple offers</h3>
+            <p>The more you do, the more you earn</p>
+          </div>
+
+          <div class="step-number">2</div>
+        </div>
+
+        <div class="step">
+          <div class="icon-box">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="6" width="18" height="12" rx="2"></rect>
+              <path d="M3 10h18"></path>
+            </svg>
+          </div>
+
+          <div class="step-text">
+            <h3>Receive your Apple Pay reward</h3>
+            <p>Sent directly to your account</p>
+          </div>
+
+          <div class="step-number">3</div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <script>
+    const params = new URLSearchParams(window.location.search);
+    const ad = params.get("ad");
+
+    const AFFILIATE_BASE_URL = "https://giftclick.org/aff_c?offer_id=2596&aff_id=150406";
+
+    function appendParam(url, key, value) {
+      if (!value) return url;
+
+      const separator = url.includes("?") ? "&" : "?";
+      return `${url}${separator}${encodeURIComponent(key)}=${encodeURIComponent(value)}`;
+    }
+
+    const FINAL_URL = appendParam(AFFILIATE_BASE_URL, "source", ad);
+
     const cta = document.getElementById("cta");
+
+    cta.href = FINAL_URL;
 
     cta.addEventListener("click", function(e) {
       e.preventDefault();
-      window.location.href = LANDER_URL;
+      window.location.href = FINAL_URL;
     });
   </script>
 </body>
