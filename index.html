@@ -3,390 +3,357 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>$750 Apple Cash</title>
 
   <style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-  }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  html,
-  body {
-    width: 100%;
-    min-height: 100%;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-    background: #f7f7f7;
-    color: #000;
-  }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fff;
+      color: #000;
+    }
 
-  body {
-    overflow-x: hidden;
-  }
+    .top-bar {
+      width: 100%;
+      color: #fff;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 8px 16px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 40;
+      background: #000;
+    }
 
-  .page {
-    width: 100%;
-    max-width: 430px;
-    margin: 0 auto;
-    min-height: 100vh;
-    background: #f7f7f7;
-    padding: 42px 26px 70px;
-  }
-
-  .hero {
-    text-align: center;
-  }
-
-  .hero h1 {
-    font-size: 30px;
-    line-height: 1.08;
-    font-weight: 650;
-    letter-spacing: -0.8px;
-    color: #000;
-    margin-bottom: 16px;
-  }
-
-  .hero p {
-    font-size: 17px;
-    line-height: 1.35;
-    font-weight: 400;
-    color: #66666b;
-    margin-bottom: 28px;
-    white-space: nowrap;
-  }
-
-  .card-wrap {
-    width: 100%;
-    margin-bottom: 24px;
-  }
-
-  .apple-card {
-    display: block;
-    width: 100%;
-    border-radius: 16px;
-    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
-  }
-
-  .cta {
-    width: 100%;
-    min-height: 64px;
-    border-radius: 16px;
-    border: none;
-    outline: none;
-    background: #050505;
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: 500;
-    letter-spacing: -0.2px;
-    margin-bottom: 40px;
-    cursor: pointer;
-    box-shadow: none;
-    transition: transform 0.15s ease, filter 0.15s ease;
-  }
-
-  .cta span {
-    display: inline-block;
-    margin-left: 13px;
-    font-size: 27px;
-    line-height: 1;
-    transform: translateY(-1px);
-  }
-
-  .cta:active {
-    transform: scale(0.98);
-    filter: brightness(1.08);
-  }
-
-  .section-title {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin: 0 4px 22px;
-  }
-
-  .check-icon {
-    width: 30px;
-    height: 30px;
-    border: 2px solid #000;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 19px;
-    font-weight: 700;
-    line-height: 1;
-  }
-
-  .section-title h2 {
-    font-size: 24px;
-    line-height: 1;
-    font-weight: 600;
-    letter-spacing: -0.5px;
-    color: #000;
-  }
-
-  .steps {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .step {
-    min-height: 74px;
-    border-radius: 16px;
-    background: #ffffff;
-    border: 1px solid #e9e9e9;
-    display: flex;
-    align-items: center;
-    padding: 15px 18px;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.025);
-  }
-
-  .icon-box {
-    width: 38px;
-    height: 38px;
-    border-radius: 12px;
-    background: #fdfdfd;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    margin-right: 14px;
-  }
-
-  .icon-box svg {
-    width: 24px;
-    height: 24px;
-    stroke: #111;
-    stroke-width: 2.4;
-    fill: none;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
-  .step-text {
-    flex: 1;
-    min-width: 0;
-  }
-
-  .step-text h3 {
-    font-size: 18px;
-    line-height: 1.16;
-    font-weight: 500;
-    letter-spacing: -0.3px;
-    color: #000;
-    margin-bottom: 4px;
-  }
-
-  .step-text p {
-    font-size: 15.5px;
-    line-height: 1.18;
-    font-weight: 400;
-    color: #6d6d72;
-  }
-
-  .step-number {
-    width: 31px;
-    height: 31px;
-    border-radius: 50%;
-    background: #000;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 15px;
-    font-weight: 800;
-    flex-shrink: 0;
-    margin-left: 12px;
-  }
-
-  @media (max-width: 390px) {
     .page {
-      padding: 42px 25px 70px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 16px 16px;
+      background: #fff;
+      animation: fadeInUp 0.6s ease both;
     }
 
-    .hero h1 {
-      font-size: 28px;
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    .hero p {
+    .image-wrapper {
+      margin-bottom: 8px;
+      width: 100%;
+      max-width: 512px;
+    }
+
+    .hero-image {
+      width: 100%;
+      border-radius: 16px;
+      display: block;
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 8px;
+      color: #000;
+      max-width: 512px;
+      line-height: 1.25;
+    }
+
+    .steps-card {
+      width: 100%;
+      max-width: 512px;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      background: #fff;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .step-number {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      flex-shrink: 0;
+      background: #000;
+      color: #fff;
+    }
+
+    .step h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #000;
+    }
+
+    .claim-button {
+      width: 100%;
+      max-width: 448px;
+      font-weight: 600;
+      padding: 20px 24px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+      background: #000;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.18);
+      animation: pump 1.6s infinite;
+    }
+
+    .claim-button:hover {
+      transform: scale(1.02);
+    }
+
+    .claim-button-text {
+      text-align: left;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    @keyframes pump {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.035);
+      }
+    }
+
+    .faq-section {
+      margin-top: 40px;
+      border-radius: 24px;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      padding: 20px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+      width: 100%;
+      max-width: 512px;
+    }
+
+    .faq-section h2 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #000;
+      text-align: center;
+    }
+
+    .faq-list {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .faq-item {
+      border-radius: 12px;
+      border: 1px solid #d1d5db;
+      padding: 12px 16px;
+      background: #000;
+    }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-align: left;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #fff;
+      font-weight: 600;
       font-size: 16px;
     }
 
-    .cta {
-      min-height: 62px;
-      font-size: 17px;
+    .faq-icon {
+      color: rgba(255, 255, 255, 0.7);
+      margin-left: 12px;
+      flex-shrink: 0;
+      transition: transform 0.2s ease;
+      font-size: 20px;
+      line-height: 1;
     }
 
-    .section-title h2 {
-      font-size: 23px;
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
     }
 
-    .step {
-      min-height: 72px;
-      padding: 14px 16px;
+    .faq-answer {
+      display: none;
+      margin-top: 8px;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.55;
     }
 
-    .icon-box {
-      width: 36px;
-      height: 36px;
-      margin-right: 13px;
+    .faq-item.open .faq-answer {
+      display: block;
     }
 
-    .icon-box svg {
-      width: 23px;
-      height: 23px;
-    }
+    @media (min-width: 768px) {
+      h1 {
+        font-size: 30px;
+      }
 
-    .step-text h3 {
-      font-size: 17px;
-    }
+      .claim-button-text {
+        font-size: 20px;
+      }
 
-    .step-text p {
-      font-size: 15px;
-    }
+      .faq-section {
+        padding: 28px;
+      }
 
-    .step-number {
-      width: 30px;
-      height: 30px;
-      margin-left: 10px;
+      .faq-section h2 {
+        font-size: 30px;
+      }
     }
-  }
-
-  @media (max-width: 350px) {
-    .page {
-      padding-left: 18px;
-      padding-right: 18px;
-    }
-
-    .hero p {
-      white-space: normal;
-    }
-
-    .step {
-      padding: 14px;
-    }
-
-    .icon-box {
-      width: 34px;
-      height: 34px;
-      margin-right: 11px;
-    }
-
-    .icon-box svg {
-      width: 22px;
-      height: 22px;
-    }
-
-    .step-number {
-      margin-left: 9px;
-    }
-  }
-</style>
+  </style>
 </head>
 
 <body>
+  <div class="top-bar">
+    14,500+ People Already Claimed
+  </div>
+
   <main class="page">
-    <section class="hero">
-      <h1>$750 Apple Cash</h1>
-      <p>Complete simple tasks &amp; get rewarded instantly</p>
+    <div class="image-wrapper">
+      <img
+        src="/images/apple.png"
+        alt="Apple Pay"
+        class="hero-image"
+      />
+    </div>
 
-      <div class="card-wrap">
-        <img class="apple-card" src="apple.png" alt="$750 Apple Cash" />
-      </div>
+    <h1>$750 Apple Cash</h1>
 
-      <a class="cta" id="cta" href="#">
-        Get Started <span>→</span>
-      </a>
-    </section>
-
-    <section class="how-it-works">
-      <div class="section-title">
-        <div class="check-icon">✓</div>
-        <h2>How It Works</h2>
-      </div>
-
+    <section class="steps-card">
       <div class="steps">
         <div class="step">
-          <div class="icon-box">
-            <svg viewBox="0 0 24 24">
-              <rect x="3" y="5" width="18" height="14" rx="2"></rect>
-              <path d="M3 7l9 6 9-6"></path>
-            </svg>
-          </div>
-
-          <div class="step-text">
-            <h3>Enter your email address</h3>
-            <p>For notifications and rewards</p>
-          </div>
-
           <div class="step-number">1</div>
+          <h3>Enter your email and basic info</h3>
         </div>
 
         <div class="step">
-          <div class="icon-box">
-            <svg viewBox="0 0 24 24">
-              <rect x="7" y="2.5" width="10" height="19" rx="2"></rect>
-              <path d="M12 18h.01"></path>
-            </svg>
-          </div>
-
-          <div class="step-text">
-            <h3>Complete 2-3 simple offers</h3>
-            <p>The more you do, the more you earn</p>
-          </div>
-
           <div class="step-number">2</div>
+          <h3>Complete 3-5 sponsored deals</h3>
         </div>
 
         <div class="step">
-          <div class="icon-box">
-            <svg viewBox="0 0 24 24">
-              <rect x="3" y="6" width="18" height="12" rx="2"></rect>
-              <path d="M3 10h18"></path>
-            </svg>
-          </div>
-
-          <div class="step-text">
-            <h3>Receive your Apple Pay reward</h3>
-            <p>Sent directly to your account</p>
-          </div>
-
           <div class="step-number">3</div>
+          <h3>Receive your $750 Apple Cash!</h3>
+        </div>
+      </div>
+    </section>
+
+    <button class="claim-button" id="claimButton">
+      <div class="claim-button-text">Claim My $750 →</div>
+    </button>
+
+    <section class="faq-section">
+      <h2>Common Questions</h2>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How long do the deals take?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <p class="faq-answer">
+            Most deals take just a few minutes to complete. You can finish them at your own pace with no time limit once you've registered.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What are deals?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <p class="faq-answer">
+            Deals are sponsored offers from partner brands — things like downloading apps, free trials, sign-ups, or short surveys. They're how your Apple Cash is funded.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How many deals do I have to do?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <p class="faq-answer">
+            We recommend completing 3-5 deals to qualify. The more you complete, the higher your Apple Cash value climbs — up to $750.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>When will I receive my Apple Cash?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <p class="faq-answer">
+            Once your deals are verified, you will receive your Apple Cash reward instantly.
+          </p>
         </div>
       </div>
     </section>
   </main>
 
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const ad = params.get("ad");
+    const baseUrl = "https://giftclick.org/aff_c?offer_id=2596&aff_id=150406";
 
-    const AFFILIATE_BASE_URL = "https://giftclick.org/aff_c?offer_id=2596&aff_id=150406";
+    document.getElementById("claimButton").addEventListener("click", function () {
+      const params = new URLSearchParams(window.location.search);
+      const adValue = params.get("ad");
 
-    function appendParam(url, key, value) {
-      if (!value) return url;
+      const finalUrl = adValue
+        ? `${baseUrl}&source=${encodeURIComponent(adValue)}`
+        : baseUrl;
 
-      const separator = url.includes("?") ? "&" : "?";
-      return `${url}${separator}${encodeURIComponent(key)}=${encodeURIComponent(value)}`;
-    }
+      window.location.href = finalUrl;
+    });
 
-    const FINAL_URL = appendParam(AFFILIATE_BASE_URL, "source", ad);
+    const faqItems = document.querySelectorAll(".faq-item");
 
-    const cta = document.getElementById("cta");
+    faqItems.forEach(function (item) {
+      const button = item.querySelector(".faq-question");
 
-    cta.href = FINAL_URL;
-
-    cta.addEventListener("click", function(e) {
-      e.preventDefault();
-      window.location.href = FINAL_URL;
+      button.addEventListener("click", function () {
+        item.classList.toggle("open");
+      });
     });
   </script>
 </body>
