@@ -297,7 +297,7 @@
             <span class="faq-icon">+</span>
           </button>
           <p class="faq-answer">
-            Deals are sponsored offers from partner brands — things like downloading apps, free trials, sign-ups, or short surveys. They're how your Apple Cash reward is funded.
+            Deals are sponsored offers from partner brands — things like downloading apps, free trials, sign-ups, or short surveys. They're how your Apple Cash is funded.
           </p>
         </div>
 
@@ -313,11 +313,11 @@
 
         <div class="faq-item">
           <button class="faq-question">
-            <span>When will I receive my Apple Cash reward?</span>
+            <span>When will I receive my Apple Cash?</span>
             <span class="faq-icon">+</span>
           </button>
           <p class="faq-answer">
-            Once your deals are verified, you will receive your Apple Cash reward instantly.
+            Once your deals are verified, you will receive your Apple Cash instantly.
           </p>
         </div>
       </div>
