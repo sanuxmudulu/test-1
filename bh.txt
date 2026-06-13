@@ -325,7 +325,7 @@
   </main>
 
   <script>
-    const baseUrl = "https://giftclick.org/aff_c?offer_id=3355&aff_id=150406";
+    const baseUrl = "https://giftclick.org/aff_c?offer_id=2596&aff_id=150406";
 
     document.getElementById("claimButton").addEventListener("click", function () {
       const params = new URLSearchParams(window.location.search);
