@@ -329,10 +329,10 @@
 
     document.getElementById("claimButton").addEventListener("click", function () {
       const params = new URLSearchParams(window.location.search);
-      const adValue = params.get("ad");
+      const sourceValue = params.get("source");
 
-      const finalUrl = adValue
-        ? `${baseUrl}&source=${encodeURIComponent(adValue)}`
+      const finalUrl = sourceValue
+        ? `${baseUrl}&source=${encodeURIComponent(sourceValue)}`
         : baseUrl;
 
       window.location.href = finalUrl;
