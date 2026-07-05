@@ -1,357 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>$750 Apple Cash</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #fff;
-      color: #000;
-    }
-
-    .top-bar {
-      width: 100%;
-      color: #fff;
-      text-align: center;
-      font-size: 14px;
-      font-weight: 600;
-      padding: 8px 16px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 40;
-      background: #000;
-    }
-
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 48px 16px 16px;
-      background: #fff;
-      animation: fadeInUp 0.6s ease both;
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(12px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .image-wrapper {
-      margin-bottom: 8px;
-      width: 100%;
-      max-width: 512px;
-    }
-
-    .hero-image {
-      width: 100%;
-      border-radius: 16px;
-      display: block;
-    }
-
-    h1 {
-      font-size: 24px;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 12px;
-      color: #000;
-      max-width: 512px;
-      line-height: 1.25;
-    }
-
-    .steps-card {
-      width: 100%;
-      max-width: 512px;
-      border: 1px solid #e5e7eb;
-      border-radius: 16px;
-      padding: 24px;
-      margin-bottom: 24px;
-      background: #fff;
-    }
-
-    .steps {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-
-    .step {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .step-number {
-      width: 40px;
-      height: 40px;
-      border-radius: 999px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      flex-shrink: 0;
-      background: #000;
-      color: #fff;
-    }
-
-    .step h3 {
-      font-size: 16px;
-      font-weight: 600;
-      color: #000;
-    }
-
-    .claim-button {
-  width: 100%;
-  max-width: 448px;
-  font-weight: 600;
-  padding: 20px 24px;
-  border-radius: 999px;
-  margin-bottom: 12px;
-  background: #000;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.18);
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Earn up to $750 by Completing Deals</title>
+<style>
+:root{
+  --bg:#fafafa;--card:#ffffff;--txt:#111318;--dim:#5c6270;--line:#e7e8ec;
+  --blk:#111318;--acc:#16a34a;--acc2:#22c55e;--r:16px;
 }
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;min-height:100vh;overflow-x:hidden}
+.wrap{max-width:440px;margin:0 auto;padding:0 18px 120px}
 
-    .claim-button:hover {
-      transform: scale(1.02);
-    }
+/* top bar */
+.topbar{background:var(--blk);color:#fff;text-align:center;font-size:12px;font-weight:700;padding:8px 12px;letter-spacing:.3px}
 
-    .claim-button-text {
-      text-align: left;
-      font-weight: 700;
-      font-size: 18px;
-    }
+/* gift card visual */
+.cardwrap{display:flex;justify-content:center;margin:26px 0 14px}
+.gift{width:280px;height:170px;border-radius:18px;background:linear-gradient(135deg,#16a34a,#0d9488 55%,#155e75);position:relative;box-shadow:0 16px 40px rgba(20,90,60,.28);overflow:hidden}
+.gift::before{content:"";position:absolute;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.12);top:-90px;right:-70px}
+.gift::after{content:"";position:absolute;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.08);bottom:-70px;left:-40px}
+.gift .glbl{position:absolute;top:16px;left:18px;color:rgba(255,255,255,.9);font-size:14px;font-weight:700;letter-spacing:.5px}
+.gift .gamt{position:absolute;top:12px;right:18px;color:#fff;font-size:30px;font-weight:900}
+.gift .gsub{position:absolute;bottom:16px;left:18px;color:rgba(255,255,255,.85);font-size:12px;font-weight:600}
 
-   
+h1{font-size:28px;line-height:1.15;font-weight:800;text-align:center;margin:6px 0 8px}
+h1 em{font-style:normal;color:var(--acc)}
+.sub{text-align:center;color:var(--dim);font-size:15px;line-height:1.5;margin-bottom:18px}
+.sub b{color:var(--txt)}
 
+/* steps */
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin-bottom:14px;box-shadow:0 2px 10px rgba(17,19,24,.04)}
+.step{display:flex;gap:13px;padding:10px 0;border-bottom:1px solid var(--line)}
+.step:last-child{border:none}
+.snum{width:30px;height:30px;border-radius:50%;background:var(--blk);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0;font-size:14px}
+.step h3{font-size:15px;font-weight:700;margin-bottom:2px}
+.step p{font-size:13px;color:var(--dim);line-height:1.45}
 
+/* tier bar */
+.tiers{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin-bottom:14px;box-shadow:0 2px 10px rgba(17,19,24,.04)}
+.tiers .tlbl{font-size:13px;font-weight:700;margin-bottom:12px;text-align:center}
+.tbar{height:10px;background:#eef0f3;border-radius:6px;position:relative;margin:0 6px}
+.tfill{position:absolute;left:0;top:0;height:100%;width:18%;background:linear-gradient(90deg,var(--acc),var(--acc2));border-radius:6px}
+.tmarks{display:flex;justify-content:space-between;margin-top:10px;padding:0 2px}
+.tmark{text-align:center;font-size:11px;color:var(--dim);font-weight:600}
+.tmark b{display:block;font-size:13px;color:var(--txt)}
+.tmark.big b{color:var(--acc);font-size:15px}
+.tnote{text-align:center;font-size:12px;color:var(--dim);margin-top:12px}
 
-    
+/* CTA */
+.cta{display:block;width:100%;text-align:center;background:var(--blk);color:#fff;font-size:18px;font-weight:800;padding:17px;border-radius:14px;border:none;cursor:pointer;box-shadow:0 8px 24px rgba(17,19,24,.22)}
+.cta-note{text-align:center;font-size:12px;color:var(--dim);margin:8px 0 4px}
 
-    .faq-section {
-      margin-top: 40px;
-      border-radius: 24px;
-      background: #fff;
-      border: 1px solid #e5e7eb;
-      padding: 20px;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
-      width: 100%;
-      max-width: 512px;
-    }
+/* trust */
+.trust{display:flex;justify-content:center;gap:16px;margin:16px 0;flex-wrap:wrap}
+.titem{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--dim)}
+.titem b{color:var(--txt)}
 
-    .faq-section h2 {
-      font-size: 24px;
-      font-weight: 700;
-      color: #000;
-      text-align: center;
-    }
+/* faq */
+.faq{margin-top:20px}
+.faq h2{font-size:19px;font-weight:800;text-align:center;margin-bottom:12px}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:8px;padding:13px 14px;box-shadow:0 2px 8px rgba(17,19,24,.03)}
+.faq summary{font-size:14px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.faq summary::after{content:"+";color:var(--acc);font-size:18px;font-weight:400}
+.faq details[open] summary::after{content:"–"}
+.faq p{font-size:13px;color:var(--dim);line-height:1.55;margin-top:8px}
 
-    .faq-list {
-      margin-top: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
+/* sticky bar */
+.ctabar{position:fixed;bottom:0;left:0;right:0;padding:12px 18px calc(12px + env(safe-area-inset-bottom));background:linear-gradient(to top,var(--bg) 72%,transparent);z-index:50}
+.ctabar .cta{max-width:404px;margin:0 auto}
 
-    .faq-item {
-      border-radius: 12px;
-      border: 1px solid #d1d5db;
-      padding: 12px 16px;
-      background: #000;
-    }
-
-    .faq-question {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      text-align: left;
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: #fff;
-      font-weight: 600;
-      font-size: 16px;
-    }
-
-    .faq-icon {
-      color: rgba(255, 255, 255, 0.7);
-      margin-left: 12px;
-      flex-shrink: 0;
-      transition: transform 0.2s ease;
-      font-size: 20px;
-      line-height: 1;
-    }
-
-    .faq-item.open .faq-icon {
-      transform: rotate(45deg);
-    }
-
-    .faq-answer {
-      display: none;
-      margin-top: 8px;
-      font-size: 14px;
-      color: rgba(255, 255, 255, 0.8);
-      line-height: 1.55;
-    }
-
-    .faq-item.open .faq-answer {
-      display: block;
-    }
-
-    @media (min-width: 768px) {
-      h1 {
-        font-size: 30px;
-      }
-
-      .claim-button-text {
-        font-size: 20px;
-      }
-
-      .faq-section {
-        padding: 28px;
-      }
-
-      .faq-section h2 {
-        font-size: 30px;
-      }
-    }
-  </style>
+.legal{text-align:center;font-size:10px;color:#9aa0ac;margin-top:22px;line-height:1.65}
+</style>
 </head>
-
 <body>
-  <div class="top-bar">
-    14,500+ People Already Claimed
+
+<div class="topbar">14,500+ people have completed their deals</div>
+
+<div class="wrap">
+
+  <div class="cardwrap">
+    <div class="gift">
+      <div class="glbl">REWARD</div>
+      <div class="gamt">$750</div>
+      <div class="gsub">Top reward tier</div>
+    </div>
   </div>
 
-  <main class="page">
-    <div class="image-wrapper">
-      <img
-        src="/apple.png"
-        alt="Apple Cash"
-        class="hero-image"
-      />
+  <h1>Earn up to <em>$750</em><br>by completing deals</h1>
+  <p class="sub">This is a deal-completion program: you finish sponsored deals from partner brands, and <b>the more you complete, the higher your reward climbs.</b></p>
+
+  <div class="panel">
+    <div class="step">
+      <div class="snum">1</div>
+      <div><h3>Sign up free</h3><p>Enter your email and basic info. Takes under a minute, no card needed to register.</p></div>
     </div>
+    <div class="step">
+      <div class="snum">2</div>
+      <div><h3>Complete 3–5 sponsored deals</h3><p>Deals are offers from partner brands — app downloads, free trials, sign-ups, surveys. Some are free, some require a purchase or trial. You pick which ones to do.</p></div>
+    </div>
+    <div class="step">
+      <div class="snum">3</div>
+      <div><h3>Get verified & receive your reward</h3><p>Once your completed deals are verified, your reward is released. That's how the whole thing is funded — the brands pay for it.</p></div>
+    </div>
+  </div>
 
-    <h1>$750 Apple Cash</h1>
+  <div class="tiers">
+    <div class="tlbl">Your reward grows with every deal</div>
+    <div class="tbar"><div class="tfill"></div></div>
+    <div class="tmarks">
+      <div class="tmark"><b>1 deal</b>starter</div>
+      <div class="tmark"><b>3 deals</b>mid tier</div>
+      <div class="tmark big"><b>$750</b>5 deals</div>
+    </div>
+    <div class="tnote">Most people finish at their own pace — there's no time limit once you're registered.</div>
+  </div>
 
-    <section class="steps-card">
-      <div class="steps">
-        <div class="step">
-          <div class="step-number">1</div>
-          <h3>Enter your email and basic info</h3>
-        </div>
+  <button class="cta" onclick="goCta()">Start My First Deal →</button>
+  <p class="cta-note">Free sign-up · You choose which deals to complete</p>
 
-        <div class="step">
-          <div class="step-number">2</div>
-          <h3>Complete 3-5 sponsored deals</h3>
-        </div>
+  <div class="trust">
+    <div class="titem">✓ <b>Free</b> to register</div>
+    <div class="titem">✓ <b>No time limit</b></div>
+    <div class="titem">✓ You <b>pick your deals</b></div>
+  </div>
 
-        <div class="step">
-          <div class="step-number">3</div>
-          <h3>Receive your $750 Apple Cash!</h3>
-        </div>
-      </div>
-    </section>
+  <div class="faq">
+    <h2>Common Questions</h2>
+    <details><summary>How long do the deals take?</summary><p>Most deals take just a few minutes to complete. You can finish them at your own pace with no time limit once you've registered.</p></details>
+    <details><summary>What are deals?</summary><p>Deals are sponsored offers from partner brands — things like downloading apps, free trials, sign-ups, or short surveys. They're how your reward is funded.</p></details>
+    <details><summary>Do deals cost money?</summary><p>Some deals are completely free, others require a purchase, subscription, or trial. You always see what a deal requires before you start it, and you choose which ones to do.</p></details>
+    <details><summary>How many deals do I have to do?</summary><p>Your reward tier climbs with each completed deal — the top tier of $750 requires completing 5 deals. Fewer deals = a smaller reward tier.</p></details>
+    <details><summary>When will I receive my reward?</summary><p>Once your completed deals are verified. Verification requirements are listed on each deal, so make sure to follow them fully — that's the #1 reason rewards get delayed.</p></details>
+  </div>
 
-    <button class="claim-button" id="claimButton">
-      <div class="claim-button-text">Claim My $750 →</div>
-    </button>
+  <p class="legal">This is an advertisement, not part of any brand's official website. Rewards are provided through a sponsored deal-completion program and require completing the listed number of deals; some deals require purchases, subscriptions, or trials. Reward value depends on the tier reached. US residents 18+ only. All trademarks belong to their respective owners.</p>
+</div>
 
+<div class="ctabar">
+  <button class="cta" onclick="goCta()">Start My First Deal →</button>
+</div>
 
-    <section class="faq-section">
-      <h2>Common Questions</h2>
+<script>
+  const baseUrl = "https://giftclick.org/aff_c?offer_id=2596&aff_id=150406";
 
-      <div class="faq-list">
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>How long do the deals take?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <p class="faq-answer">
-            Most deals take just a few minutes to complete. You can finish them at your own pace with no time limit once you've registered.
-          </p>
-        </div>
+  function buildUrl() {
+    const params = new URLSearchParams(window.location.search);
+    const sourceValue = params.get("source");
 
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>What are deals?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <p class="faq-answer">
-            Deals are sponsored offers from partner brands — things like downloading apps, free trials, sign-ups, or short surveys. They're how your Apple Cash is funded.
-          </p>
-        </div>
+    const finalUrl = sourceValue
+      ? `${baseUrl}&source=${encodeURIComponent(sourceValue)}`
+      : baseUrl;
 
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>How many deals do I have to do?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <p class="faq-answer">
-            We recommend completing 3-5 deals. The more you complete, the higher your Apple Cash value climbs — up to $750.
-          </p>
-        </div>
+    return finalUrl;
+  }
 
-        <div class="faq-item">
-          <button class="faq-question">
-            <span>When will I receive my Apple Cash?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <p class="faq-answer">
-            Once your deals are verified, you will receive your Apple Cash instantly.
-          </p>
-        </div>
-      </div>
-    </section>
-  </main>
+  function goCta() {
+    window.location.href = buildUrl();
+  }
+</script>
 
-  <script>
-    const baseUrl = "https://giftclick.org/aff_c?offer_id=2596&aff_id=150406";
-
-    document.getElementById("claimButton").addEventListener("click", function () {
-      const params = new URLSearchParams(window.location.search);
-      const sourceValue = params.get("source");
-
-      const finalUrl = sourceValue
-        ? `${baseUrl}&source=${encodeURIComponent(sourceValue)}`
-        : baseUrl;
-
-      window.location.href = finalUrl;
-    });
-
-    const faqItems = document.querySelectorAll(".faq-item");
-
-    faqItems.forEach(function (item) {
-      const button = item.querySelector(".faq-question");
-
-      button.addEventListener("click", function () {
-        item.classList.toggle("open");
-      });
-    });
-  </script>
 </body>
 </html>
