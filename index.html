@@ -38,7 +38,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 48px 16px 24px;
+      padding: 48px 16px 120px;
       background: #fff;
       animation: fadeInUp 0.6s ease both;
     }
@@ -74,10 +74,6 @@
       color: #000;
       max-width: 512px;
       line-height: 1.25;
-    }
-
-    .highlight {
-      font-weight: 700;
     }
 
     .subtitle {
@@ -341,6 +337,28 @@
       margin-top: 20px;
     }
 
+    .sticky-cta {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 60;
+      padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+      background: linear-gradient(to top, #fff 75%, rgba(255, 255, 255, 0));
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .sticky-cta.hidden {
+      opacity: 0;
+      transform: translateY(100%);
+      pointer-events: none;
+    }
+
+    .sticky-cta .claim-button {
+      margin: 0 auto;
+      max-width: 448px;
+    }
+
     @media (min-width: 768px) {
       h1 {
         font-size: 30px;
@@ -375,7 +393,7 @@
       />
     </div>
 
-    <h1>Earn up to $750 by completing deals</h1>
+    <h1>Earn up to $750 by<br>completing deals</h1>
 
     <p class="subtitle">
       This is a deal-completion program: finish sponsored deals from partner brands, and <b>the more you complete, the higher your reward climbs.</b>
@@ -511,10 +529,16 @@
     </p>
   </main>
 
+  <div class="sticky-cta" id="stickyCta">
+    <button class="claim-button" id="stickyClaimButton">
+      <div class="claim-button-text">Start My First Deal →</div>
+    </button>
+  </div>
+
   <script>
     const baseUrl = "https://giftclick.org/aff_c?offer_id=2596&aff_id=150406";
 
-    document.getElementById("claimButton").addEventListener("click", function () {
+    function getFinalUrl() {
       const params = new URLSearchParams(window.location.search);
       const sourceValue = params.get("source");
 
@@ -522,8 +546,15 @@
         ? `${baseUrl}&source=${encodeURIComponent(sourceValue)}`
         : baseUrl;
 
-      window.location.href = finalUrl;
-    });
+      return finalUrl;
+    }
+
+    function goToOffer() {
+      window.location.href = getFinalUrl();
+    }
+
+    document.getElementById("claimButton").addEventListener("click", goToOffer);
+    document.getElementById("stickyClaimButton").addEventListener("click", goToOffer);
 
     const faqItems = document.querySelectorAll(".faq-item");
 
@@ -534,6 +565,26 @@
         item.classList.toggle("open");
       });
     });
+
+    const mainCta = document.getElementById("claimButton");
+    const stickyCta = document.getElementById("stickyCta");
+
+    const observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            stickyCta.classList.add("hidden");
+          } else {
+            stickyCta.classList.remove("hidden");
+          }
+        });
+      },
+      {
+        threshold: 0.15
+      }
+    );
+
+    observer.observe(mainCta);
   </script>
 </body>
 </html>
