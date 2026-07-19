@@ -30,7 +30,7 @@ const COLORS = ["pink", "blue", "yellow"];
 // Probability that piece generation prefers a row-completing shape over a
 // fully random one, when a completable row exists. Kept below 1 so play
 // still feels organic rather than obviously scripted.
-const BIAS_CHANCE = 0.6;
+const BIAS_CHANCE = 0.72;
 
 let pieceIdCounter = 0;
 

@@ -27,9 +27,8 @@ export function renderFinalScreen(container, { baseEarned, ctaUrl }) {
     <section class="screen final-screen">
       <div class="final-icon">${BADGE_ICON_SVG}</div>
 
-      <p class="final-label">You Could Have Earned</p>
+      <p class="final-label">You Have Earned</p>
       <p class="final-amount">${formatMoney(totalEarned)}</p>
-      <p class="final-subtext">Here is what your 2x Premium Boost could have paid out</p>
 
       <div class="boost-pill">${boostDatePill}</div>
 
@@ -38,7 +37,7 @@ export function renderFinalScreen(container, { baseEarned, ctaUrl }) {
           <span>Game Rewards</span>
           <span class="value">${formatMoney(baseEarned)}</span>
         </div>
-        <div class="breakdown-row">
+        <div class="breakdown-row boost">
           <span>2x Premium Boost</span>
           <span class="value">+${formatMoney(baseEarned)}</span>
         </div>
@@ -49,9 +48,9 @@ export function renderFinalScreen(container, { baseEarned, ctaUrl }) {
       </div>
 
       <div class="final-cta-wrap">
-        <a class="cta-button" id="start-earning-btn" href="${ctaUrl}">Start Earning</a>
+        <a class="cta-button" id="start-earning-btn" href="${ctaUrl}">Install & Cashout</a>
         <p class="countdown-text">
-          Signup within <span class="clock" id="countdown-clock">${formatClock(COUNTDOWN_START_SECONDS)}</span> to claim 2x boost for a week.
+          Signup within <span class="clock" id="countdown-clock">${formatClock(COUNTDOWN_START_SECONDS)}</span> to claim <span class="highlight">2x boost</span> for a week.
         </p>
       </div>
     </section>

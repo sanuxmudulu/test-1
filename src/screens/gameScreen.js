@@ -8,6 +8,7 @@ import {
   clearRows,
 } from "../game/board.js";
 import { generateBiasedPiece } from "../game/pieces.js";
+import { findAutoFillPlacement } from "../game/autoFill.js";
 import { makePieceDraggable } from "../game/dragDrop.js";
 
 const STARTING_MOVES = 6;
@@ -161,7 +162,22 @@ export function renderGameScreen(container, { onComplete }) {
 
     setTimeout(() => {
       clearRows(state.board, fullRows);
+
+      // Backfill a small random shape elsewhere on the board so it doesn't
+      // read as wiped clean after every clear — see autoFill.js for the
+      // placement heuristic (never completes a row, prefers empty rows).
+      const autoFill = findAutoFillPlacement(state.board);
+      if (autoFill) {
+        placePiece(state.board, autoFill, autoFill.rowStart, autoFill.colStart);
+      }
+
       syncBoardCells(cellEls, state.board);
+
+      if (autoFill) {
+        for (const [dr, dc] of autoFill.shape) {
+          cellEls[autoFill.rowStart + dr][autoFill.colStart + dc].classList.add("auto-fill-in");
+        }
+      }
 
       if (state.moves <= 0) {
         finishGame();
@@ -206,7 +222,7 @@ function syncBoardCells(cellEls, board) {
     for (let c = 0; c < COLS; c++) {
       const cellEl = cellEls[r][c];
       const color = board[r][c];
-      cellEl.classList.remove("filled", "pink", "blue", "yellow", "clearing");
+      cellEl.classList.remove("filled", "pink", "blue", "yellow", "clearing", "auto-fill-in");
       if (color) {
         cellEl.classList.add("filled", color);
       }

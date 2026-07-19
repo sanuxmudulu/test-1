@@ -15,7 +15,7 @@ export function renderIntroScreen(container, { onPlay }) {
     <section class="screen intro-screen">
       <div class="intro-icon">${BADGE_ICON_SVG}</div>
 
-      <h1 class="intro-headline">Get <span class="accent">Paid</span> From Your Phone</h1>
+      <h1 class="intro-headline">Get <span class="accent">Paid</span> From<br>Your Phone</h1>
 
       <p class="intro-subtext">
         Play games, test apps &amp; take surveys — cash out to PayPal, Venmo or your bank.
