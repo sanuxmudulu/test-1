@@ -1,0 +1,619 @@
+/* ==========================================================================
+   Palette — sampled directly (pixel-picked) from the reference screenshots.
+   Background gradient stops, block colors, and gold accent all come from
+   actual pixel values in the provided images, not approximations.
+   ========================================================================== */
+:root {
+  --bg-top: #5141d9;
+  --bg-mid: #7e40db;
+  --bg-bottom: #c9458b;
+
+  --pink: #e25a81;
+  --pink-dark: #b83f65;
+  --pink-light: #ef8aa5;
+
+  --blue: #2956f4;
+  --blue-dark: #1d3fc2;
+  --blue-light: #6c8bff;
+
+  --yellow: #e9c765;
+  --yellow-dark: #c9a349;
+  --yellow-light: #f5dc8f;
+
+  --gold: #ecd177;
+  --gold-light: #f5e6a8;
+  --gold-dark: #c9a749;
+
+  --board-panel: #593ead;
+  --board-panel-dark: #4a3399;
+  --cell-empty: #5e3bad;
+  --cell-border: rgba(255, 255, 255, 0.08);
+
+  --white: #ffffff;
+  --text-soft: rgba(255, 255, 255, 0.85);
+  --text-dim: rgba(255, 255, 255, 0.65);
+
+  --icon-purple: #4a3fd6;
+
+  --danger: #ff5f6d;
+  --danger-bg: rgba(255, 95, 109, 0.35);
+
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "SF Pro Rounded",
+    "Nunito", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--white);
+  background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 45%, var(--bg-bottom) 100%);
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+#app {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+}
+
+/* Mobile-first container — stays a phone-width column even on wider viewports
+   so the layout never stretches into a desktop look. */
+.app-shell {
+  width: 100%;
+  max-width: 430px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.screen {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.35s ease both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   Screen 1 — Intro
+   ========================================================================== */
+.intro-screen {
+  justify-content: center;
+  align-items: center;
+  padding: 32px 24px;
+  gap: 22px;
+  text-align: center;
+}
+
+.intro-icon {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.18));
+}
+
+.intro-icon svg {
+  width: 52px;
+  height: 52px;
+}
+
+.intro-headline {
+  font-size: 28px;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+}
+
+.intro-headline .accent {
+  color: var(--gold-light);
+}
+
+.intro-subtext {
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--text-soft);
+  max-width: 300px;
+}
+
+.steps-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+  width: 100%;
+  max-width: 320px;
+  margin-top: 4px;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 84px;
+}
+
+.step-circle {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-circle svg {
+  width: 20px;
+  height: 20px;
+}
+
+.step-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  text-align: center;
+}
+
+.step-connector {
+  flex: 1;
+  height: 0;
+  border-top: 2px dashed rgba(255, 255, 255, 0.35);
+  margin-top: 23px;
+}
+
+.cta-button {
+  width: 100%;
+  max-width: 320px;
+  padding: 16px 20px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--gold-light), var(--gold));
+  color: #4a3200;
+  font-size: 16.5px;
+  font-weight: 800;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  text-align: center;
+}
+
+.cta-button:active {
+  transform: translateY(1px) scale(0.99);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.cta-note {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+/* ==========================================================================
+   Screen 2 — Game
+   ========================================================================== */
+.game-screen {
+  padding: 20px 16px 24px;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.game-title {
+  font-size: 21px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.game-title .brand-accent {
+  color: var(--gold-light);
+}
+
+.boost-badge {
+  background: var(--white);
+  color: #6b3fb0;
+  font-size: 11.5px;
+  font-weight: 800;
+  padding: 6px 14px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  letter-spacing: 0.2px;
+}
+
+.stats-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.stat-pill {
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  padding: 9px 18px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.stat-pill.money {
+  color: var(--gold-light);
+}
+
+.board-panel {
+  width: 100%;
+  background: linear-gradient(180deg, var(--board-panel), var(--board-panel-dark));
+  border-radius: 22px;
+  padding: 10px;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.25), 0 10px 30px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.board-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  gap: 4px;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  position: relative;
+}
+
+.cell {
+  border-radius: 6px;
+  background: var(--cell-empty);
+  border: 1px solid var(--cell-border);
+  position: relative;
+  transition: background-color 0.12s ease, transform 0.12s ease;
+}
+
+.cell.filled {
+  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.18), inset 0 2px 0 rgba(255, 255, 255, 0.25);
+  border-radius: 7px;
+}
+
+.cell.filled.pink {
+  background: var(--pink);
+}
+.cell.filled.blue {
+  background: var(--blue);
+}
+.cell.filled.yellow {
+  background: var(--yellow);
+}
+
+.cell.preview-valid {
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.6);
+}
+
+.cell.preview-invalid {
+  background: var(--danger-bg);
+  box-shadow: inset 0 0 0 2px rgba(255, 95, 109, 0.7);
+}
+
+.cell.clearing {
+  animation: clearFlash 0.4s ease forwards;
+}
+
+@keyframes clearFlash {
+  0% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  40% {
+    transform: scale(1.08);
+    filter: brightness(1.6);
+  }
+  100% {
+    transform: scale(0.3);
+    opacity: 0;
+    filter: brightness(2);
+  }
+}
+
+/* Tray of draggable pieces */
+.tray {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 4px 0;
+  min-height: 92px;
+}
+
+.tray-slot {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 92px;
+}
+
+.piece {
+  display: grid;
+  gap: 4px;
+  touch-action: none;
+  cursor: grab;
+}
+
+.piece.dragging {
+  cursor: grabbing;
+  opacity: 0.25;
+}
+
+.piece-cell {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.18), inset 0 2px 0 rgba(255, 255, 255, 0.25);
+}
+
+.piece-cell.pink {
+  background: var(--pink);
+}
+.piece-cell.blue {
+  background: var(--blue);
+}
+.piece-cell.yellow {
+  background: var(--yellow);
+}
+.piece-cell.empty {
+  visibility: hidden;
+}
+
+/* Ghost piece that follows the pointer while dragging */
+.drag-ghost {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 500;
+  display: grid;
+  gap: 4px;
+  opacity: 0.92;
+  transform: translate(-9999px, -9999px);
+}
+
+.drag-ghost .piece-cell {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+}
+
+/* Reward popup shown on row clear */
+.reward-popup {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translate(-50%, -12px);
+  background: rgba(30, 18, 66, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 10px 18px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  z-index: 50;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  white-space: nowrap;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.reward-popup.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.reward-amounts {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.reward-base {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--white);
+  text-decoration: line-through;
+  opacity: 0.75;
+}
+
+.reward-boosted {
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--gold-light);
+  text-shadow: 0 0 14px rgba(245, 230, 168, 0.55);
+}
+
+.reward-banner {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gold-light);
+  background: rgba(255, 255, 255, 0.08);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+/* ==========================================================================
+   Screen 3 — Final reveal
+   ========================================================================== */
+.final-screen {
+  justify-content: center;
+  align-items: center;
+  padding: 40px 24px;
+  gap: 14px;
+  text-align: center;
+}
+
+.final-icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.18));
+  margin-bottom: 4px;
+}
+
+.final-icon svg {
+  width: 46px;
+  height: 46px;
+}
+
+.final-label {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--text-soft);
+}
+
+.final-amount {
+  font-size: 44px;
+  font-weight: 900;
+  color: var(--gold-light);
+  text-shadow: 0 0 20px rgba(245, 230, 168, 0.4);
+  letter-spacing: -0.5px;
+}
+
+.final-subtext {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-soft);
+  max-width: 280px;
+  margin-bottom: 6px;
+}
+
+.boost-pill {
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  padding: 7px 16px;
+  font-size: 12.5px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.breakdown-box {
+  width: 100%;
+  max-width: 320px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 16px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+}
+
+.breakdown-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-soft);
+}
+
+.breakdown-row .value {
+  font-weight: 700;
+  color: var(--white);
+}
+
+.breakdown-row.total {
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--white);
+}
+
+.breakdown-row.total .value {
+  color: var(--gold-light);
+  font-size: 17px;
+}
+
+.final-cta-wrap {
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.countdown-text {
+  font-size: 12.5px;
+  color: var(--text-dim);
+}
+
+.countdown-text .clock {
+  font-weight: 800;
+  color: var(--white);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================================================
+   Small-screen safety net (down to ~360px)
+   ========================================================================== */
+@media (max-width: 380px) {
+  .intro-headline {
+    font-size: 25px;
+  }
+  .final-amount {
+    font-size: 38px;
+  }
+  .step {
+    width: 76px;
+  }
+  .piece-cell {
+    width: 19px;
+    height: 19px;
+  }
+}
