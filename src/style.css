@@ -133,9 +133,10 @@ button {
   filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.18));
 }
 
-.intro-icon svg {
+.intro-icon img {
   width: 52px;
   height: 52px;
+  object-fit: contain;
 }
 
 .intro-headline {
@@ -508,10 +509,10 @@ button {
    Screen 3 — Final reveal
    ========================================================================== */
 .final-screen {
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  padding: 40px 24px;
-  gap: 14px;
+  padding: 28px 24px 40px;
+  gap: 22px;
   text-align: center;
 }
 
@@ -525,15 +526,17 @@ button {
   margin-bottom: 4px;
 }
 
-.final-icon svg {
+.final-icon img {
   width: 46px;
   height: 46px;
+  object-fit: contain;
 }
 
 .final-label {
-  font-size: 16.5px;
+  font-size: 24px;
   font-weight: 800;
   color: var(--text-soft);
+  white-space: nowrap;
 }
 
 .final-amount {

@@ -1,5 +1,3 @@
-import { BADGE_ICON_SVG } from "../icons.js";
-
 const STEP_ICONS = {
   check: `<svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
   play: `<svg viewBox="0 0 24 24" fill="none"><path d="M8 6.5v11l9-5.5-9-5.5z" fill="#fff"/></svg>`,
@@ -13,7 +11,7 @@ const STEP_ICONS = {
 export function renderIntroScreen(container, { onPlay }) {
   container.innerHTML = `
     <section class="screen intro-screen">
-      <div class="intro-icon">${BADGE_ICON_SVG}</div>
+      <div class="intro-icon"><img src="/testerup.png" alt="Testerup" /></div>
 
       <h1 class="intro-headline">Get <span class="accent">Paid</span> From<br>Your Phone</h1>
 

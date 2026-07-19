@@ -4,7 +4,7 @@ A mobile-first game landing page built with plain Vite + HTML/CSS/JS (no framewo
 
 ## Structure
 
-- `index.html` — entry point; includes the synchronous traffic-filter redirect script in `<head>`
+- `index.html` — entry point
 - `src/main.js` — screen router (intro → game → final)
 - `src/screens/` — one module per screen
 - `src/game/` — board state, piece shapes/generation, drag-and-drop

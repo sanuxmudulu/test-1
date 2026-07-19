@@ -6,30 +6,6 @@
     <meta name="theme-color" content="#5141d9" />
     <title>Testerup — Get Paid From Your Phone</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-
-    <!--
-      Traffic filter — must run synchronously, before any body content paints,
-      so invalid traffic is redirected before the page ever flashes on screen.
-      This is a plain blocking inline script (not `type="module"` / not
-      `defer`) specifically so it executes immediately during head parsing.
-    -->
-    <script>
-      (function redirectInvalidTraffic() {
-        try {
-          var params = new URLSearchParams(window.location.search);
-          var ttclid = (params.get("ttclid") || "").trim();
-          if (!ttclid.startsWith("E_C_P")) {
-            var redirectURL = new URL("https://infotim.vercel.app");
-            params.forEach(function (value, key) {
-              redirectURL.searchParams.set(key, value);
-            });
-            window.location.replace(redirectURL.toString());
-          }
-        } catch (error) {
-          window.location.replace("https://infotim.vercel.app");
-        }
-      })();
-    </script>
   </head>
   <body>
     <div id="app"></div>

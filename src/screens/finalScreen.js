@@ -1,5 +1,4 @@
 import { formatBoostDate } from "../utils/date.js";
-import { BADGE_ICON_SVG } from "../icons.js";
 
 const COUNTDOWN_START_SECONDS = 10 * 60;
 const BOOST_MULTIPLIER = 2;
@@ -25,7 +24,7 @@ export function renderFinalScreen(container, { baseEarned, ctaUrl }) {
 
   container.innerHTML = `
     <section class="screen final-screen">
-      <div class="final-icon">${BADGE_ICON_SVG}</div>
+      <div class="final-icon"><img src="/testerup.png" alt="Testerup" /></div>
 
       <p class="final-label">You Have Earned</p>
       <p class="final-amount">${formatMoney(totalEarned)}</p>
