@@ -41,7 +41,7 @@ export function renderFinalScreen(container, { baseEarned, ctaUrl }) {
           <span class="value">+${formatMoney(baseEarned)}</span>
         </div>
         <div class="breakdown-row total">
-          <span>Total You Could Have Earned</span>
+          <span>Total You Have Earned</span>
           <span class="value">${formatMoney(totalEarned)}</span>
         </div>
       </div>
